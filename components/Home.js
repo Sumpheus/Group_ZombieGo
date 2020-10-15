@@ -26,8 +26,8 @@ class Home extends React.Component {
         isLooping
         />
 
-      <View style={styles.titlecontainer}>
-      <View style={styles.titlecontainer2}>  
+      <View style={styles.titleContainer}>
+      <View style={styles.titleContainer2}>  
       <Text
       style={styles.title}>
           ZombiGo!
@@ -35,7 +35,8 @@ class Home extends React.Component {
       </View>
       </View>
     
-    <View style = {styles.menu}>
+    <View style = {styles.menuContainer}>
+    <View style = {styles.menuContainer2}>  
       <Text style={styles.textmenu}>Make your choice !</Text>
       <TouchableOpacity style={styles.btnPrimary}>
         <Text>Simulation</Text>       
@@ -43,6 +44,7 @@ class Home extends React.Component {
       <TouchableOpacity style={styles.btnPrimary}>
         <Text>Arcade</Text>
       </TouchableOpacity>
+    </View>
     </View>  
 
     <View style = {styles.footercontainer}>
@@ -65,7 +67,7 @@ const styles = StyleSheet.create({
       flex: 1,      
     },
 
-    titlecontainer:{
+    titleContainer:{
       backgroundColor: 'black', 
       flex:1,
       opacity: 0.5,
@@ -73,7 +75,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
 
-    titlecontainer2:{
+    titleContainer2:{
       display: 'flex',
       alignItems: 'center',
     },
@@ -86,22 +88,41 @@ const styles = StyleSheet.create({
         // fontFamily: 'BlackOpsOne-Regular',
     },
 
-    menu:{
+    menuContainer:{
       flex: 4,
-      color: 'white',
+      display: 'flex',
+      justifyContent: 'center',
+
+    },
+
+    menuContainer2:{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
 
     textmenu:{
       fontSize: 22,
       color: 'aqua',
+      textAlign: 'center',
+      paddingBottom: 50,
     },
+
+    btnPrimary: {
+      backgroundColor: 'blue',
+      color: 'white',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      
+    },
+
 
     footercontainer: {
       marginTop: 20,
       backgroundColor: 'black',
       flex: 1,
-      opacity: 0.5, 
-      
+      opacity: 0.5,       
     },
 
     footerText: {
@@ -116,17 +137,8 @@ const styles = StyleSheet.create({
       bottom: 0,
       right: 0,
       opacity: 1,
-    },
-    btnPrimary: {
-      backgroundColor: 'blue',
-      color: 'white',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexDirection: 'row',
-      
-  }
-
+    }
+    
  })
 
 
