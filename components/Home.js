@@ -9,10 +9,10 @@ import { useFonts, BlackOpsOne_400Regular } from '@expo-google-fonts/dev';
 
 class Home extends React.Component {
 
-  
-  
+
+
   render() {
-    return(       
+    return(
     <View style = {styles.container}>
 
       <Video
@@ -24,35 +24,31 @@ class Home extends React.Component {
         ignoresSilentSwitch={"obey"}
         shouldPlay
         isLooping
-        />
-
+      />
       <View style={styles.titlecontainer}>
-      <View style={styles.titlecontainer2}>  
-      <Text
-      style={styles.title}>
-          ZombiGo!
-      </Text>
+        <View style={styles.titlecontainer2}>
+          <Text style={styles.title}>ZombiGo!</Text>
+        </View>
       </View>
-      </View>
-    
+
     <View style = {styles.menu}>
       <Text style={styles.textmenu}>Make your choice !</Text>
       <TouchableOpacity style={styles.btnPrimary}>
-        <Text>Simulation</Text>       
+        <Text style={styles.btnText}>Simulation</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btnPrimary}>
-        <Text>Arcade</Text>
+        <Text style={styles.btnText}>Arcade</Text>
       </TouchableOpacity>
-    </View>  
+    </View>
 
     <View style = {styles.footercontainer}>
-      
+
       <Text style = {styles.footerText}>
         Mention Légal
       </Text>
- 
+
     </View>
-   </View> 
+   </View>
     )
   }
 }
@@ -62,11 +58,11 @@ class Home extends React.Component {
 const styles = StyleSheet.create({
 
     container: {
-      flex: 1,      
+      flex: 1,
     },
 
     titlecontainer:{
-      backgroundColor: 'black', 
+      backgroundColor: 'black',
       flex:1,
       opacity: 0.5,
       display: 'flex',
@@ -82,7 +78,7 @@ const styles = StyleSheet.create({
       opacity: 1,
       fontSize: 40,
       color: 'red',
-      
+
         // fontFamily: 'BlackOpsOne-Regular',
     },
 
@@ -94,14 +90,16 @@ const styles = StyleSheet.create({
     textmenu:{
       fontSize: 22,
       color: 'aqua',
+      textAlign: 'center',
+      marginTop: 20,
     },
 
     footercontainer: {
       marginTop: 20,
       backgroundColor: 'black',
       flex: 1,
-      opacity: 0.5, 
-      
+      opacity: 0.5,
+
     },
 
     footerText: {
@@ -118,14 +116,24 @@ const styles = StyleSheet.create({
       opacity: 1,
     },
     btnPrimary: {
-      backgroundColor: 'blue',
-      color: 'white',
+      backgroundColor: 'green',
+      borderRadius: 20,
+      borderStyle: 'solid',
+      borderWidth: 1,
+      borderColor: '#fff',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'row',
-      
-  }
+      marginTop: 40,
+      marginRight: 60,
+      marginLeft: 60,
+      padding: 50,
+    },
+    btnText: {
+      color: '#fff',
+      fontSize: 30,
+    }
 
  })
 
