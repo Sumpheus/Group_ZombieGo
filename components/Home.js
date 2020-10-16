@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity } from 'react-native';
+import { StatusBar } from "react-native";
+import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { AppLoading } from 'expo';
 import { Video } from 'expo-av';
-import { useFonts, BlackOpsOne_400Regular } from '@expo-google-fonts/dev';
-
+// import { arial } from 'expo-font';
+// import { useFonts, Arial } from '@expo-google-fonts/dev';
+// import StatusBar from './customComponents/SatusBar.js';
 
 
 class Home extends React.Component {
 
-
-
   render() {
     return(
     <View style = {styles.container}>
-
+      <StatusBar
+        barStyle = "light-content"
+        hidden = {false}
+        backgroundColor = "transparent" // ou une couleur..à voir
+        translucent = {true}
+      />
       <Video
         source={require("./../assets/videos/WorldMap2.mp4")}
         style={styles.backvideo}
@@ -27,26 +31,43 @@ class Home extends React.Component {
       />
       <View style={styles.titlecontainer}>
         <View style={styles.titlecontainer2}>
-          <Text style={styles.title}>ZombiGo!</Text>
+          <Text style={styles.title}>ZombiGo</Text>
         </View>
       </View>
 
     <View style = {styles.menu}>
-      <Text style={styles.textmenu}>Make your choice !</Text>
-      <TouchableOpacity style={styles.btnPrimary}>
-        <Text style={styles.btnText}>Simulation</Text>
+      <Text style={styles.textmenu}>_____ Select mode _____</Text>
+      <TouchableOpacity
+        style={styles.btnPrimary}
+        onPress={() => displayElements()}
+        >
+        <ImageBackground source={require('../assets/img/simulation.png')} style={styles.btnImageSim}>
+          <Text style={styles.btnText}>Simulation</Text>
+        </ImageBackground>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btnPrimary}>
-        <Text style={styles.btnText}>Arcade</Text>
+        <ImageBackground source={require('../assets/img/arcade.png')} style={styles.btnImageArc}>
+          <Text style={styles.btnText}>Arcade</Text>
+        </ImageBackground>
       </TouchableOpacity>
     </View>
 
     <View style = {styles.footercontainer}>
 
-      <Text style = {styles.footerText}>
-        Mention Légal
+      <Text style = {[styles.footerText, {flexDirection:'row'}]}>
+        <Text style = {{color:'white'}}>App created by </Text>
+        <Text style = {{color:'red'}} onPress={() => Linking.openURL('https://www.linkedin.com/in/kevin-nguma/')}>Kevin</Text>
+        <Text style = {{color:'white'}}>, </Text>
+        <Text style = {{color:'red'}} onPress={() => Linking.openURL('https://www.linkedin.com/in/oswald-quevillart/')}>Oswald </Text>
+        <Text style = {{color:'white'}}>and </Text>
+        <Text style = {{color:'red'}} onPress={() => Linking.openURL('https://www.linkedin.com/in/philippe-perechodov/')}>Philippe</Text>
       </Text>
-
+      <Text style = {[styles.footerText, {color:'white'}]}>
+        ACS projet - October 2020
+      </Text>
+      <Text style = {[styles.footerText, {color:'red'}]} onPress={() => Linking.openURL('https://github.com/Sumpheus/Group_ZombieGo')}>
+        Github
+      </Text>
     </View>
    </View>
     )
@@ -59,54 +80,49 @@ const styles = StyleSheet.create({
 
     container: {
       flex: 1,
+      // marginTop: 25,
     },
 
     titlecontainer:{
-      backgroundColor: 'black',
+      backgroundColor: 'transparent',
       flex:1,
-      opacity: 0.5,
+      // opacity: 0.5,
       display: 'flex',
       justifyContent: 'center',
     },
-
     titlecontainer2:{
       display: 'flex',
       alignItems: 'center',
     },
-
     title:{
       opacity: 1,
-      fontSize: 40,
+      fontSize: 80,
       color: 'red',
-
-        // fontFamily: 'BlackOpsOne-Regular',
+      // fontFamily: 'arial',
     },
-
     menu:{
       flex: 4,
       color: 'white',
     },
-
     textmenu:{
-      fontSize: 22,
-      color: 'aqua',
+      fontSize: 30,
+      color: 'white',
       textAlign: 'center',
-      marginTop: 20,
+      margin: 30,
     },
-
     footercontainer: {
       marginTop: 20,
-      backgroundColor: 'black',
+      backgroundColor: 'transparent',
       flex: 1,
-      opacity: 0.5,
-
+      // opacity: 0.5,
     },
-
     footerText: {
-      color: 'aqua',
+      // color: 'white',
       fontSize: 20,
+      marginBottom: 5,
+      marginTop: 5,
+      textAlign: 'center',
     },
-
     backvideo:{
       position: 'absolute',
       top: 0,
@@ -116,25 +132,38 @@ const styles = StyleSheet.create({
       opacity: 1,
     },
     btnPrimary: {
-      backgroundColor: 'green',
-      borderRadius: 20,
-      borderStyle: 'solid',
-      borderWidth: 1,
-      borderColor: '#fff',
+      backgroundColor: 'transparent',
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center',
       flexDirection: 'row',
-      marginTop: 40,
-      marginRight: 60,
-      marginLeft: 60,
-      padding: 50,
+      height: 150,
+      flex: 1,
     },
     btnText: {
-      color: '#fff',
-      fontSize: 30,
-    }
-
+      color: 'white',
+      textShadowColor: 'red',
+      textShadowRadius: 10,
+      fontWeight: 'bold',
+      fontSize: 40,
+      marginLeft: -200,
+    },
+    btnImageSim: {
+      flex: 1,
+      width: 125,
+      height: 125,
+      // paddingTop: 20,
+      alignItems: 'flex-start', // aligne le texte...bizarrement
+      marginLeft: 240,
+    },
+    btnImageArc: {
+      flex: 1,
+      width: 125,
+      height: 125,
+      // paddingTop: 20,
+      alignItems: 'flex-end', // aligne le texte...bizarrement
+      marginRight: 80,
+      marginLeft: 40,
+    },
  })
 
 
