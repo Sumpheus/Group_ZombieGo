@@ -1,14 +1,38 @@
-import React from 'react';
-// import Home from './components/Home';
-import Search from './components/customComponents/Search';
-import { View, Text } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import 'react-native-gesture-handler';
+import * as React from 'react';
 
-export default class App extends React.Component {
-  render() {
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import Home from './components/Home.js';
+import Element from './components/Element.js';
+
+const StackNavigator = createStackNavigator()
+
+export default function App() {
     return (
-      <Search/>
+        <NavigationContainer>
+            <StackNavigator.Navigator initialRouteName="Home">
+                <StackNavigator.Screen
+                  name="Home"
+                  component={Home}
+                  options={{
+                    headerShown:false,
+                  }}
+                />
+                <StackNavigator.Screen
+                  name="Element"
+                  component={Element}
+                  options={{
+                    headerTitleAlign:'center',
+                    title:"What do you need ?",
+                    headerStyle:
+                      {
+
+                      }
+                  }}
+                />
+            </StackNavigator.Navigator>
+        </NavigationContainer>
     );
-  }
 }

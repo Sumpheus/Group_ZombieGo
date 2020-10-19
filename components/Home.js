@@ -1,82 +1,48 @@
-import { StatusBar } from "react-native"
-import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRoute, Route, Switch } from 'react-router-dom'
-import { AppLoading } from 'expo'
-import { Video } from 'expo-av'
-import WiggleBox from 'react-native-wiggle-box'
-import { NavigationContainer, NavigationHelpersContext } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
-// import Search from './components/customComponents/Search';
-import { StyleSheet, 
-         View,
-         Text,
-         TextInput,
-         Button,
-         ScrollView,
-         TouchableOpacity,
-         ImageBackground,
-         Linking,
-         Animated
-} from 'react-native';
-// import { arial } from 'expo-font';
-// import { useFonts, Arial } from '@expo-google-fonts/dev';
-// import StatusBar from './customComponents/SatusBar.js';
+import * as React from 'react';
+import { StatusBar } from "react-native";
+import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking } from 'react-native';
+import { useState, useEffect } from 'react';
+import { AppLoading } from 'expo';
+import { Video } from 'expo-av';
 
+export default function Home({ navigation }) {
+  return (
+  <View style = {styles.container}>
+    <StatusBar
+      barStyle = "light-content"
+      hidden = {false}
+      backgroundColor = "transparent" // ou une couleur..à voir
+      translucent = {true}
+    />
 
-class Home extends React.Component {
+    <Video
+      source={require("./../assets/videos/WorldMap2.mp4")}
+      style={styles.backvideo}
+      // repeat={true}
+      resizeMode={"cover"}
+      rate={1.0}
+      ignoresSilentSwitch={"obey"}
+      shouldPlay
+      isLooping
+    />
 
-  // handleClick = () => console.log("You've clicked")
-
-  
-
-
-  render() {
-    return(
-
-    <View style = {styles.container}>
-      <StatusBar
-        barStyle = "light-content"
-        hidden = {false}
-        backgroundColor = "transparent" // ou une couleur..à voir
-        translucent = {true}
-      />
-      <Video
-        source={require("./../assets/videos/WorldMap2.mp4")}
-        style={styles.backvideo}
-        resizeMode={"cover"}
-        rate={1.0}
-        ignoresSilentSwitch={"obey"}
-        shouldPlay
-        isLooping
-      />
-      <View style={styles.titlecontainer}>
-        <View style={styles.titlecontainer2}>
-          <Text style={styles.title}>ZombiGo</Text>
-        </View>
+    <View style={styles.titlecontainer}>
+      <View style={styles.titlecontainer2}>
+        <Text style={[styles.title, {fontFamily: 'serif'}]}>ZombiGo</Text>
       </View>
+    </View>
 
     <View style = {styles.menu}>
-      <Text style={styles.textmenu}>____ Select mode ____</Text>
-
-      {/* <WiggleBox
-        active={true}
-        handlePress={this.handleClick}
-        boxStyle={styles.boxContainer}
-        duration={200}
-        type={'wiggle'}
-        > */}
-
+      <Text style={styles.textmenu}>Select mode</Text>
       <TouchableOpacity
         style={styles.btnPrimary}
-        // onPress={() => displayElements()}
-        onPress={() => { navigate("Search");}}
+        onPress={() => navigation.navigate('Element')}
         >
         <ImageBackground source={require('../assets/img/simulation.png')} style={styles.btnImageSim}>
           <Text style={styles.btnText}>Simulation</Text>
         </ImageBackground>
       </TouchableOpacity>
-  
+
       {/* </WiggleBox> */}
 
       <TouchableOpacity style={styles.btnPrimary}>
@@ -87,7 +53,6 @@ class Home extends React.Component {
     </View>
 
     <View style = {styles.footercontainer}>
-
       <Text style = {[styles.footerText, {flexDirection:'row'}]}>
         <Text style = {{color:'white'}}>App created by </Text>
         <Text style = {{color:'red'}} onPress={() => Linking.openURL('https://www.linkedin.com/in/kevin-nguma/')}>Kevin</Text>
@@ -103,24 +68,20 @@ class Home extends React.Component {
         Github
       </Text>
     </View>
+
    </View>
-    )
-  }
+  )
 }
 
 
 
 const styles = StyleSheet.create({
-
     container: {
       flex: 1,
-      // marginTop: 25,
     },
-
     titlecontainer:{
       backgroundColor: 'transparent',
       flex:1,
-      // opacity: 0.5,
       display: 'flex',
       justifyContent: 'center',
     },
@@ -132,7 +93,6 @@ const styles = StyleSheet.create({
       opacity: 1,
       fontSize: 80,
       color: 'red',
-      // fontFamily: 'arial',
     },
     menu:{
       flex: 4,
@@ -151,15 +111,15 @@ const styles = StyleSheet.create({
       color: 'white',
       textAlign: 'center',
       margin: 30,
+      flexDirection: 'row',
+      textShadowColor: 'red',
     },
     footercontainer: {
       marginTop: 20,
       backgroundColor: 'transparent',
       flex: 1,
-      // opacity: 0.5,
     },
     footerText: {
-      // color: 'white',
       fontSize: 20,
       marginBottom: 5,
       marginTop: 5,
@@ -175,7 +135,7 @@ const styles = StyleSheet.create({
     },
 
     boxContainer:{
-      
+
     },
 
     btnPrimary: {
@@ -188,7 +148,6 @@ const styles = StyleSheet.create({
     },
     btnText: {
       color: 'white',
-      textShadowColor: 'red',
       textShadowRadius: 10,
       fontWeight: 'bold',
       fontSize: 40,
@@ -198,7 +157,6 @@ const styles = StyleSheet.create({
       flex: 1,
       width: 125,
       height: 125,
-      // paddingTop: 20,
       alignItems: 'flex-start', // aligne le texte...bizarrement
       marginLeft: 240,
     },
@@ -206,14 +164,8 @@ const styles = StyleSheet.create({
       flex: 1,
       width: 125,
       height: 125,
-      // paddingTop: 20,
       alignItems: 'flex-end', // aligne le texte...bizarrement
       marginRight: 80,
       marginLeft: 40,
     },
  })
-
-
-
-
-export default Home
