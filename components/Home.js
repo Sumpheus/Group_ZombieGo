@@ -1,14 +1,35 @@
-import { StatusBar } from "react-native";
-import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import { AppLoading } from 'expo';
-import { Video } from 'expo-av';
+import { StatusBar } from "react-native"
+import React, { useState, useEffect } from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRoute, Route, Switch } from 'react-router-dom'
+import { AppLoading } from 'expo'
+import { Video } from 'expo-av'
+import WiggleBox from 'react-native-wiggle-box'
+import { NavigationContainer, NavigationHelpersContext } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+// import Search from './components/customComponents/Search';
+import { StyleSheet, 
+         View,
+         Text,
+         TextInput,
+         Button,
+         ScrollView,
+         TouchableOpacity,
+         ImageBackground,
+         Linking,
+         Animated
+} from 'react-native';
 // import { arial } from 'expo-font';
 // import { useFonts, Arial } from '@expo-google-fonts/dev';
 // import StatusBar from './customComponents/SatusBar.js';
 
 
 class Home extends React.Component {
+
+  // handleClick = () => console.log("You've clicked")
+
+  
+
 
   render() {
     return(
@@ -36,15 +57,28 @@ class Home extends React.Component {
       </View>
 
     <View style = {styles.menu}>
-      <Text style={styles.textmenu}>_____ Select mode _____</Text>
+      <Text style={styles.textmenu}>____ Select mode ____</Text>
+
+      {/* <WiggleBox
+        active={true}
+        handlePress={this.handleClick}
+        boxStyle={styles.boxContainer}
+        duration={200}
+        type={'wiggle'}
+        > */}
+
       <TouchableOpacity
         style={styles.btnPrimary}
-        onPress={() => displayElements()}
+        // onPress={() => displayElements()}
+        onPress={() => { navigate("Search");}}
         >
         <ImageBackground source={require('../assets/img/simulation.png')} style={styles.btnImageSim}>
           <Text style={styles.btnText}>Simulation</Text>
         </ImageBackground>
       </TouchableOpacity>
+  
+      {/* </WiggleBox> */}
+
       <TouchableOpacity style={styles.btnPrimary}>
         <ImageBackground source={require('../assets/img/arcade.png')} style={styles.btnImageArc}>
           <Text style={styles.btnText}>Arcade</Text>
@@ -138,6 +172,10 @@ const styles = StyleSheet.create({
       bottom: 0,
       right: 0,
       opacity: 1,
+    },
+
+    boxContainer:{
+      
     },
 
     btnPrimary: {
