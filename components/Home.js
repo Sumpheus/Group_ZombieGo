@@ -95,9 +95,7 @@ const styles = StyleSheet.create({
       flex: 4,
       display: 'flex',
       justifyContent: 'center',
-
     },
-
     menuContainer2:{
       display: 'flex',
       alignItems: 'center',
@@ -110,6 +108,7 @@ const styles = StyleSheet.create({
       margin: 30,
       flexDirection: 'row',
       textShadowColor: 'red',
+      textShadowRadius: 10,
     },
     footercontainer: {
       marginTop: 20,
@@ -130,7 +129,6 @@ const styles = StyleSheet.create({
       right: 0,
       opacity: 1,
     },
-
     btnPrimary: {
       backgroundColor: 'transparent',
       display: 'flex',
@@ -141,7 +139,6 @@ const styles = StyleSheet.create({
     },
     btnText: {
       color: 'white',
-      textShadowRadius: 10,
       fontWeight: 'bold',
       fontSize: 40,
       marginLeft: -200,
