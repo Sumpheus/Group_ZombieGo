@@ -42,6 +42,9 @@ export default function Home({ navigation }) {
           <Text style={styles.btnText}>Simulation</Text>
         </ImageBackground>
       </TouchableOpacity>
+
+      {/* </WiggleBox> */}
+
       <TouchableOpacity style={styles.btnPrimary}>
         <ImageBackground source={require('../assets/img/arcade.png')} style={styles.btnImageArc}>
           <Text style={styles.btnText}>Arcade</Text>
