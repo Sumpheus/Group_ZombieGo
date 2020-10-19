@@ -93,7 +93,15 @@ const styles = StyleSheet.create({
     },
     menu:{
       flex: 4,
-      color: 'white',
+      display: 'flex',
+      justifyContent: 'center',
+
+    },
+
+    menuContainer2:{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     textmenu:{
       fontSize: 30,
@@ -122,6 +130,7 @@ const styles = StyleSheet.create({
       right: 0,
       opacity: 1,
     },
+
     btnPrimary: {
       backgroundColor: 'transparent',
       display: 'flex',
