@@ -1,56 +1,41 @@
-import React from 'react'
+import 'react-native-gesture-handler';
+import * as React from 'react';
+import { Component }  from 'react';
 import { StatusBar } from "react-native";
 import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
 import { Video } from 'expo-av';
-import { Audio } from 'expo';
-import getelement from '../components/GetElement';
 
 
+class Element extends Component {
+  render() {
+    return (
+      <View style = {styles.container}>
+        <StatusBar
+          barStyle = "light-content"
+          hidden = {false}
+          backgroundColor = "transparent" // ou une couleur..à voir
+          translucent = {true}
+        />
 
+        <Video
+          source={require("./../assets/videos/testvideo.mp4")}
+          style={styles.backvideo}
+          // repeat={true}
+          resizeMode={"cover"}
+          rate={1.0}
+          ignoresSilentSwitch={"obey"}
+          shouldPlay
+          isLooping
+        />
 
+        <View style={styles.titlecontainer}>
 
-export default function Element({ navigation }) {
+        </View>
 
-  
-
-  return (
-    getelement(),
-  <View style = {styles.container}>
-    <StatusBar
-      barStyle = "light-content"
-      hidden = {false}
-      backgroundColor = "red" // ou une couleur..à voir
-      translucent = {true}
-    />
-    
-    <Video
-      style={styles.backvideo}
-      source={require("./../assets/videos/House.mp4")}
-      resizeMode={"cover"}
-      rate={1.0}
-      ignoresSilentSwitch={"obey"}
-      shouldPlay
-      isLooping
-    />
-
-{/* <Button title='Rechercher' onPress={() => }/> */}
-    <View style={styles.titlecontainer}>
-      <Text style={styles.title}>Available Items</Text>
-    </View>
-
-    <View style={styles.listcontainer}>
-      <FlatList
-        // data={element}
-      />
-    </View>
-     
-      
-  </View>
-  )
+      </View>
+    )
+  }
 }
-
-
 
 const styles = StyleSheet.create({
     container: {
@@ -73,3 +58,5 @@ const styles = StyleSheet.create({
       color: 'red',
     }
  })
+
+export default Element
