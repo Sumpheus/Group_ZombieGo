@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react';
 import { AppLoading } from 'expo';
 import { Video } from 'expo-av';
 
-export default function Home({ navigation }) {
+
+const Home = ({ navigation }) => {
   return (
   <View style = {styles.container}>
     <StatusBar
@@ -37,43 +38,25 @@ export default function Home({ navigation }) {
       <TouchableOpacity
         style={styles.btnPrimary}
         onPress={() => navigation.navigate('Element')}
-        >
+      >
         <ImageBackground source={require('../assets/img/simulation.png')} style={styles.btnImageSim}>
           <Text style={styles.btnText}>Simulation</Text>
         </ImageBackground>
       </TouchableOpacity>
 
-      {/* </WiggleBox> */}
-
-      <TouchableOpacity style={styles.btnPrimary}>
+      <TouchableOpacity
+        style={styles.btnPrimary}
+        onPress={() => navigation.navigate('Arcade')}
+      >
         <ImageBackground source={require('../assets/img/arcade.png')} style={styles.btnImageArc}>
           <Text style={styles.btnText}>Arcade</Text>
         </ImageBackground>
       </TouchableOpacity>
     </View>
 
-    <View style = {styles.footercontainer}>
-      <Text style = {[styles.footerText, {flexDirection:'row'}]}>
-        <Text style = {{color:'white'}}>App created by </Text>
-        <Text style = {{color:'red'}} onPress={() => Linking.openURL('https://www.linkedin.com/in/kevin-nguma/')}>Kevin</Text>
-        <Text style = {{color:'white'}}>, </Text>
-        <Text style = {{color:'red'}} onPress={() => Linking.openURL('https://www.linkedin.com/in/oswald-quevillart/')}>Oswald </Text>
-        <Text style = {{color:'white'}}>and </Text>
-        <Text style = {{color:'red'}} onPress={() => Linking.openURL('https://www.linkedin.com/in/philippe-perechodov/')}>Philippe</Text>
-      </Text>
-      <Text style = {[styles.footerText, {color:'white'}]}>
-        ACS projet - October 2020
-      </Text>
-      <Text style = {[styles.footerText, {color:'red'}]} onPress={() => Linking.openURL('https://github.com/Sumpheus/Group_ZombieGo')}>
-        Github
-      </Text>
-    </View>
-
    </View>
-  )
+ )
 }
-
-
 
 const styles = StyleSheet.create({
     container: {
@@ -113,17 +96,6 @@ const styles = StyleSheet.create({
       textShadowColor: 'red',
       textShadowRadius: 10,
     },
-    footercontainer: {
-      marginTop: 20,
-      backgroundColor: 'transparent',
-      flex: 1,
-    },
-    footerText: {
-      fontSize: 20,
-      marginBottom: 5,
-      marginTop: 5,
-      textAlign: 'center',
-    },
     backvideo:{
       position: 'absolute',
       top: 0,
@@ -162,3 +134,6 @@ const styles = StyleSheet.create({
       marginLeft: 40,
     },
  })
+
+
+export default Home;
