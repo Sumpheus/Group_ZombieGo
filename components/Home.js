@@ -19,7 +19,6 @@ const Home = ({ navigation }) => {
     <Video
       source={require("./../assets/videos/WorldMap2.mp4")}
       style={styles.backvideo}
-      // repeat={true}
       resizeMode={"cover"}
       rate={1.0}
       ignoresSilentSwitch={"obey"}

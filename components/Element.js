@@ -41,13 +41,21 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
-    backvideo:{
+
+    backvideo: {
       position: 'absolute',
       top: 0,
       left: 0,
       bottom: 0,
       right: 0,
       opacity: 1,
+    },
+
+    title: {
+      textAlign: 'center',
+      marginTop: 40,
+      fontSize: 20,
+      color: 'red',
     }
  })
 
