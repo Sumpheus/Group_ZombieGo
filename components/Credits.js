@@ -7,7 +7,8 @@ import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity
 
 
 class Credits extends Component {
-  render() {
+
+  _displayCredits( navigation ) {
     return (
       <View style = {styles.container}>
         <StatusBar
@@ -37,6 +38,15 @@ class Credits extends Component {
       </View>
     )
   }
+
+  render() {
+    return (
+      <View style = {styles.container}>
+        {this._displayCredits()}
+      </View>
+    )
+  }
+
 }
 
 const styles = StyleSheet.create({
@@ -55,8 +65,7 @@ const styles = StyleSheet.create({
       marginTop: 5,
       textAlign: 'center',
     },
-
- })
+})
 
 
 export default Credits

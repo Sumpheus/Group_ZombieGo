@@ -3,13 +3,15 @@ import * as React from 'react';
 import { Component }  from 'react';
 
 import { StatusBar } from "react-native";
-import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking } from 'react-native';
+import { StyleSheet, View, Text, FlatList, SafeAreaView, Image } from 'react-native';
 
+import items from '../assets/save/saveInventory.js';
 
 class Inventory extends Component {
-  render() {
+
+  _displayInventory(navigation) {
     return (
-      <View style = {styles.container}>
+      <View>
         <StatusBar
           barStyle = "light-content"
           hidden = {false}
@@ -17,26 +19,84 @@ class Inventory extends Component {
           translucent = {true}
         />
 
-        <View style={styles.titlecontainer}>
-          <Text>Inventaire !!!!!!</Text>
-        </View>
-
+        <FlatList
+          data={items}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({item, index}) => {
+              if (item.number > 0) {
+                return (
+                  <View style = {styles.item}>
+                    <Image style={styles.image} source={require('../assets/img/tent.png')}/>
+                    <View style = {styles.viewTitle}><Text style = {styles.title}>{item.title} :</Text></View>
+                    <View style = {styles.viewNumber}><Text style = {styles.number}>{item.number}</Text></View>
+                  </View>
+                )
+              } else {
+                return (
+                  <View style = {styles.item}>
+                    <Image style={styles.image} source={require('../assets/img/backpack.png')}/>
+                    <View style = {styles.viewTitle}><Text>Your inventory is empty</Text></View>
+                  </View>
+                )
+              }
+            }
+          }
+        />
       </View>
     )
   }
+
+
+  render() {
+    return (
+      <View style = {styles.container}>
+        {this._displayInventory()}
+      </View>
+    )
+  }
+
 }
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
-    titlecontainer:{
+    safeAreaView: {
       flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      textAlign: "center",
+    },
+    item: {
+      backgroundColor: 'transparent',
+      padding: 10,
+      borderBottomColor: "black",
+      borderStyle:'solid',
+      borderBottomWidth: 1,
+      flexDirection: 'row',
+    },
+    viewImage: {
+      flex: 1,
+    },
+    viewTitle: {
+      flex: 5,
+    },
+    viewNumber: {
+      flex: 1,
+    },
+    image: {
+      width: 30,
+      height: 30,
+      marginRight: 10,
+    },
+    title: {
+      color: 'black',
+      fontWeight: 'bold',
+      fontSize: 24,
+    },
+    number: {
+      color: 'red',
+      fontWeight: 'bold',
+      fontSize: 24,
     }
- })
+})
 
 
 export default Inventory;
