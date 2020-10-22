@@ -9,7 +9,24 @@ import items from '../assets/save/saveInventory.js';
 
 class Inventory extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      inventory: []
+    }
+  }
+
+  componentDidMount() {
+
+
+    this.setState({
+      inventory: items
+    })
+
+  }
+
   _displayInventory(navigation) {
+    console.log(this.state.inventory);
     return (
       <View>
         <StatusBar
@@ -23,24 +40,25 @@ class Inventory extends Component {
           data={items}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({item, index}) => {
-              if (item.number > 0) {
-                return (
-                  <View style = {styles.item}>
-                    <Image style={styles.image} source={require('../assets/img/tent.png')}/>
-                    <View style = {styles.viewTitle}><Text style = {styles.title}>{item.title} :</Text></View>
-                    <View style = {styles.viewNumber}><Text style = {styles.number}>{item.number}</Text></View>
-                  </View>
-                )
-              } else {
-                return (
-                  <View style = {styles.item}>
-                    <Image style={styles.image} source={require('../assets/img/backpack.png')}/>
-                    <View style = {styles.viewTitle}><Text>Your inventory is empty</Text></View>
-                  </View>
-                )
-              }
+            if (item.number > 0) {
+              return (
+                <View style = {styles.item}>
+                  <Image style = {styles.image} source={require('../assets/img/tent.png')}/>
+                  <View style = {styles.viewTitle}><Text style = {styles.title}>{item.title} :</Text></View>
+                  <View style = {styles.viewNumber}><Text style = {styles.number}>{item.number}</Text></View>
+                </View>
+              )
             }
-          }
+            else {
+              return (
+                <View style = {styles.item}>
+                  <Image style = {styles.image} source={require('../assets/img/backpack.png')}/>
+                  <View style = {styles.viewTitle}><Text>Your inventory is empty</Text></View>
+                </View>
+              )
+            }
+          }}
+
         />
       </View>
     )

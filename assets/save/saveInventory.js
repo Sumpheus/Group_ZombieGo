@@ -14,7 +14,7 @@ export default data = [
     {
         "id": 3,
         "title": "Antibiotic",
-        "number": 0,
+        "number":2644864,
         "icon": "/antibiotic.png"
     },
     {
