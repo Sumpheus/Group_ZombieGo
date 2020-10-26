@@ -12,8 +12,7 @@ const Home = ({ navigation }) => {
     <StatusBar
       barStyle = "light-content"
       hidden = {false}
-      backgroundColor = "transparent" // ou une couleur..à voir
-      translucent = {true}
+      backgroundColor = "black" // ou une couleur..à voir
     />
 
     <Video
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
     title:{
       opacity: 1,
       fontSize: 80,
-      color: 'red',
+      color: '#850606',
     },
     menu:{
       flex: 4,
@@ -92,7 +91,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       margin: 30,
       flexDirection: 'row',
-      textShadowColor: 'red',
+      textShadowColor: '#850606',
       textShadowRadius: 10,
     },
     backvideo:{

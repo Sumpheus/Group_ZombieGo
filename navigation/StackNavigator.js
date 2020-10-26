@@ -9,12 +9,24 @@ import Arcade from '../components/Arcade.js';
 import Inventory from '../components/Inventory.js';
 import Credits from '../components/Credits.js';
 
-const StackNavigator = createStackNavigator();
+const Stack = createStackNavigator();
+
+const screenOptionStyle = {
+  headerStyle: {
+    backgroundColor: "#850606",
+  },
+  headerTintColor: "white",
+  headerBackTitle: "Back", // Ne semble pas fonctionner
+  headerTitleStyle:{
+    fontWeight: 'bold',
+  },
+  headerTitleAlign:'center',
+};
 
 const MainStackNavigator = () => {
   return (
-    <StackNavigator.Navigator initialRouteName="Home">
-      <StackNavigator.Screen
+    <Stack.Navigator screenOptions={screenOptionStyle} initialRouteName="Home">
+      <Stack.Screen
         name="Home"
         component={Home}
         options={{
@@ -22,71 +34,55 @@ const MainStackNavigator = () => {
         }}
       />
 
-      <StackNavigator.Screen
+      <Stack.Screen
         name="Element"
         component={Element}
         options={{
-          headerTitleAlign:'center',
           title:"What do you need ?",
-          headerTransparent:true,
-          headerTitleStyle:{
-            fontWeight: 'bold',
-          }
+          headerTransparent:false,
         }}
       />
 
-      <StackNavigator.Screen
+      <Stack.Screen
         name="Arcade"
         component={Arcade}
         options={{
-          headerTitleAlign:'center',
           title:"Your mission :",
           headerTransparent:false,
-          headerTitleStyle:{
-            fontWeight: 'bold',
-          }
         }}
       />
 
-    </StackNavigator.Navigator>
+    </Stack.Navigator>
   );
 };
 
 const InventoryStackNavigator = () => {
   return (
-    <StackNavigator.Navigator>
-      <StackNavigator.Screen
+    <Stack.Navigator screenOptions={screenOptionStyle} >
+      <Stack.Screen
         name="Inventory"
         component={Inventory}
         options={{
-          headerTitleAlign:'center',
           title:"Your inventory",
           headerTransparent:false,
-          headerTitleStyle:{
-            fontWeight: 'bold',
-          }
         }}
       />
-    </StackNavigator.Navigator>
+    </Stack.Navigator>
   );
 };
 
 const CreditsStackNavigator = () => {
   return (
-    <StackNavigator.Navigator>
-      <StackNavigator.Screen
+    <Stack.Navigator screenOptions={screenOptionStyle} >
+      <Stack.Screen
         name="Credits"
         component={Credits}
         options={{
-          headerTitleAlign:'center',
           title:"Who are we ?",
           headerTransparent:false,
-          headerTitleStyle:{
-            fontWeight: 'bold',
-          }
         }}
       />
-    </StackNavigator.Navigator>
+    </Stack.Navigator>
   );
 };
 

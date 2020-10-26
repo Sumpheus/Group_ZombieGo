@@ -1,20 +1,20 @@
-export default data = [
+export default inventoryData = [
     {
         "id": 1,
         "title": "Bandage",
-        "number": 1,
+        "number": 5,
         "icon": "/bandage.png"
     },
     {
         "id": 2,
         "title": "Disinfectant",
-        "number": 0,
+        "number": 5,
         "icon": "/disinfectant.png"
     },
     {
         "id": 3,
         "title": "Antibiotic",
-        "number":2644864,
+        "number": 5,
         "icon": "/antibiotic.png"
     },
     {
