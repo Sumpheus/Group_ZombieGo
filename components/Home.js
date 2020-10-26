@@ -3,12 +3,16 @@ import { StatusBar } from "react-native";
 import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking } from 'react-native';
 import { useState, useEffect } from 'react';
 import { AppLoading } from 'expo';
-import { Video } from 'expo-av';
+import { Video, Audio } from 'expo-av';
+import { WebView } from 'react-native-webview';
 
 
 const Home = ({ navigation }) => {
+
+  
   return (
-  <View style = {styles.container}>
+    
+  <ScrollView style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
     <StatusBar
       barStyle = "light-content"
       hidden = {false}
@@ -25,6 +29,7 @@ const Home = ({ navigation }) => {
       shouldPlay
       isLooping
     />
+
 
     <View style={styles.titlecontainer}>
       <View style={styles.titlecontainer2}>
@@ -53,20 +58,23 @@ const Home = ({ navigation }) => {
       </TouchableOpacity>
     </View>
 
-   </View>
+   </ScrollView>
  )
 }
+
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
+
     titlecontainer:{
       backgroundColor: 'transparent',
       flex:1,
       display: 'flex',
       justifyContent: 'center',
     },
+
     titlecontainer2:{
       display: 'flex',
       alignItems: 'center',

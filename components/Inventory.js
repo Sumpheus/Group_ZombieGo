@@ -9,7 +9,7 @@ import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity
 class Inventory extends Component {
   render() {
     return (
-      <View style = {styles.container}>
+      <ScrollView style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
         <StatusBar
           barStyle = "light-content"
           hidden = {false}
@@ -21,7 +21,7 @@ class Inventory extends Component {
           <Text>Inventaire !!!!!!</Text>
         </View>
 
-      </View>
+      </ScrollView>
     )
   }
 }

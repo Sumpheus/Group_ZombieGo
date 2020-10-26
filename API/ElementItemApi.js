@@ -20,3 +20,4 @@ export function getItemByElementIdFromApi(id) {
 export function getElementIconFromApi(id) {
   return 'https://image.tmdb.org/t/p/w300' + name
 }
+

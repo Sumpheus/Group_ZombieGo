@@ -2,14 +2,20 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import { Component }  from 'react';
 import { StatusBar } from "react-native";
-import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking } from 'react-native';
-import { Video } from 'expo-av';
+import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking, AsyncStorage } from 'react-native';
+import { Video, Audio } from 'expo-av';
+import { getElementFromApi, getItemByElementIdFromApi } from './../API/ElementItemApi';
+
+
 
 
 class Element extends Component {
+
   render() {
+
     return (
-      <View style = {styles.container}>
+      
+      <ScrollView style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
         <StatusBar
           barStyle = "light-content"
           hidden = {false}
@@ -17,10 +23,12 @@ class Element extends Component {
           translucent = {true}
         />
 
+
+  {/* Background video */}
         <Video
-          source={require("./../assets/videos/testvideo.mp4")}
+          source={require("./../assets/videos/Road.mp4")}
           style={styles.backvideo}
-          // repeat={true}
+          repeat={true}
           resizeMode={"cover"}
           rate={1.0}
           ignoresSilentSwitch={"obey"}
@@ -28,14 +36,29 @@ class Element extends Component {
           isLooping
         />
 
+      {/* Background Music from DAN TERMINUS - Inhert */}
+      <Video
+          source={require("./../assets/audio/OST1.mp3")}
+          style={styles.backsound}
+          repeat={true}
+          rate={1.0}
+          ignoresSilentSwitch={"obey"}
+          shouldPlay
+          isLooping
+          audioOnly
+        />
+
+
         <View style={styles.titlecontainer}>
 
         </View>
 
-      </View>
+        
+      </ScrollView>
     )
   }
 }
+
 
 const styles = StyleSheet.create({
     container: {
