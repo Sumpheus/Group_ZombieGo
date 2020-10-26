@@ -4,52 +4,11 @@ import { Component }  from 'react';
 import { StatusBar } from "react-native";
 import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking, AsyncStorage, FlatList, Image, ActivityIndicator } from 'react-native';
 import { Video, Audio } from 'expo-av';
-import { getElementFromApi, getItemByElementIdFromApi } from './../API/ElementItemApi';
+import { getElementIconFromApi, IPV4 } from './../API/ElementItemApi';
 
-
-
+// const IPV4 = "http://172.21.201.27:8000";
 
 class Element extends Component {
-
-  render() {
-
-    return (
-
-      <ScrollView style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
-        <StatusBar
-          barStyle = "light-content"
-          hidden = {false}
-          backgroundColor = "transparent" // ou une couleur..à voir
-          translucent = {true}
-        />
-
-
-  {/* Background video */}
-        <Video
-          source={require("./../assets/videos/Road.mp4")}
-          style={styles.backvideo}
-          repeat={true}
-          resizeMode={"cover"}
-          rate={1.0}
-          ignoresSilentSwitch={"obey"}
-          shouldPlay
-          isLooping
-        />
-
-      {/* Background Music from DAN TERMINUS - Inhert */}
-      <Video
-          source={require("./../assets/audio/OST1.mp3")}
-          style={styles.backsound}
-          repeat={true}
-          rate={1.0}
-          ignoresSilentSwitch={"obey"}
-          shouldPlay
-          isLooping
-          audioOnly
-        />
-
-
-        <View style={styles.titlecontainer}>
 
   constructor(props) {
     super(props)
@@ -60,7 +19,7 @@ class Element extends Component {
   }
 
   componentDidMount() {
-    return fetch('http://172.21.201.27:8000/api/v1/element', {
+    return fetch(IPV4 + '/api/v1/element', {
       headers:  {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -85,16 +44,27 @@ class Element extends Component {
       )
     } else {
       return (
-        <View style = {styles.container}>
+        <ScrollView style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
           <Video
-            source={require("./../assets/videos/testvideo.mp4")}
+            source={require("./../assets/videos/Road.mp4")}
             style={styles.backvideo}
+            repeat={true}
             resizeMode={"cover"}
             rate={1.0}
             ignoresSilentSwitch={"obey"}
             shouldPlay
             isLooping
           />
+          <Video
+              source={require("./../assets/audio/OST1.mp3")}
+              style={styles.backsound}
+              repeat={true}
+              rate={1.0}
+              ignoresSilentSwitch={"obey"}
+              shouldPlay
+              isLooping
+              audioOnly
+            />
           <FlatList
             data={this.state.elements}
             keyExtractor={(item, index) => item.id.toString()}
@@ -105,13 +75,15 @@ class Element extends Component {
 
                     <Image style={styles.image} source={{uri: getElementIconFromApi(item.title)}}/>
 
-                    <View style = {styles.viewTitle}><Text style = {styles.title}>{item.title}</Text></View>
+                    <View style = {styles.viewTitle}>
+                      <Text style = {styles.title}>{item.title}</Text>
+                    </View>
                   </View>
                 )
               }
             }}
           />
-        </View>
+        </ScrollView>
       )
     }
   }

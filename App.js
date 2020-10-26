@@ -3,7 +3,6 @@ import * as React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 
-// import MainStackNavigator from './navigation/StackNavigator.js';
 import BottomTabNavigator from "./navigation/TabNavigator.js";
 
 

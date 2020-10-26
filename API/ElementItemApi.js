@@ -1,6 +1,8 @@
+export const IPV4 = "http://172.21.201.27:8000"
+
 // Pour faire apparaitre les icones des elements ou des items
 export function getElementIconFromApi(name) {
-  return 'http://172.21.201.27:8000/images/' + name + '.png'
+  return IPV4 + '/images/' + name + '.png'
 }
 
 
@@ -33,4 +35,3 @@ export function getItemByElementIdFromApi(id) {
     .then((response) => response.json())
     .catch((error) => console.error(error));
 }
-

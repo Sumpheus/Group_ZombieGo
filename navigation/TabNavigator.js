@@ -57,7 +57,7 @@ const BottomTabNavigator = () => {
         component={CreditsStackNavigator}
         options={{
           tabBarLabel: 'Who are we ?',
-          tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
+          tabBarIcon: () => {
             return <Image
               source={require('../assets/img/gitHub.png')}
               style={styles.icon}

@@ -9,56 +9,52 @@ import { WebView } from 'react-native-webview';
 
 const Home = ({ navigation }) => {
 
-  
   return (
-    
-  <ScrollView style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
-    <StatusBar
-      barStyle = "light-content"
-      hidden = {false}
-      backgroundColor = "black" // ou une couleur..à voir
-    />
+    <ScrollView style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
+      <StatusBar
+        barStyle = "light-content"
+        hidden = {false}
+        backgroundColor = "black" // ou une couleur..à voir
+      />
 
-    <Video
-      source={require("./../assets/videos/WorldMap2.mp4")}
-      style={styles.backvideo}
-      resizeMode={"cover"}
-      rate={1.0}
-      ignoresSilentSwitch={"obey"}
-      shouldPlay
-      isLooping
-    />
+      <Video
+        source={require("./../assets/videos/WorldMap2.mp4")}
+        style={styles.backvideo}
+        resizeMode={"cover"}
+        rate={1.0}
+        ignoresSilentSwitch={"obey"}
+        shouldPlay
+        isLooping
+      />
 
-
-    <View style={styles.titlecontainer}>
-      <View style={styles.titlecontainer2}>
-        <Text style={[styles.title, {fontFamily: 'serif'}]}>ZombiGo</Text>
+      <View style={styles.titlecontainer}>
+        <View style={styles.titlecontainer2}>
+          <Text style={[styles.title, {fontFamily: 'serif'}]}>ZombiGo</Text>
+        </View>
       </View>
-    </View>
 
-    <View style = {styles.menu}>
-      <Text style={styles.textmenu}>Select mode</Text>
-      <TouchableOpacity
-        style={styles.btnPrimary}
-        onPress={() => navigation.navigate('Element')}
-      >
-        <ImageBackground source={require('../assets/img/simulation.png')} style={styles.btnImageSim}>
-          <Text style={styles.btnText}>Simulation</Text>
-        </ImageBackground>
-      </TouchableOpacity>
+      <View style = {styles.menu}>
+        <Text style={styles.textmenu}>Select mode</Text>
+        <TouchableOpacity
+          style={styles.btnPrimary}
+          onPress={() => navigation.navigate('Element')}
+        >
+          <ImageBackground source={require('../assets/img/simulation.png')} style={styles.btnImageSim}>
+            <Text style={styles.btnText}>Simulation</Text>
+          </ImageBackground>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.btnPrimary}
-        onPress={() => navigation.navigate('Arcade')}
-      >
-        <ImageBackground source={require('../assets/img/arcade.png')} style={styles.btnImageArc}>
-          <Text style={styles.btnText}>Arcade</Text>
-        </ImageBackground>
-      </TouchableOpacity>
-    </View>
-
-   </ScrollView>
- )
+        <TouchableOpacity
+          style={styles.btnPrimary}
+          onPress={() => navigation.navigate('Arcade')}
+        >
+          <ImageBackground source={require('../assets/img/arcade.png')} style={styles.btnImageArc}>
+            <Text style={styles.btnText}>Arcade</Text>
+          </ImageBackground>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+  )
 }
 
 
