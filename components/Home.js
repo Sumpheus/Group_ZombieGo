@@ -1,90 +1,72 @@
 import * as React from 'react';
 import { StatusBar } from "react-native";
-import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking } from 'react-native';
-import { useState, useEffect } from 'react';
-import { AppLoading } from 'expo';
-import { Video } from 'expo-av';
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
+import Video from "react-native-video";
 
-export default function Home({ navigation }) {
+
+const Home = ({ navigation }) => {
+
   return (
-  <View style = {styles.container}>
-    <StatusBar
-      barStyle = "light-content"
-      hidden = {false}
-      backgroundColor = "transparent" // ou une couleur..à voir
-      translucent = {true}
-    />
+    <ScrollView style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
+      <StatusBar
+        barStyle = "light-content"
+        hidden = {false}
+        backgroundColor = "black" // ou une couleur..à voir
+      />
 
     <Video
-      source={require("./../assets/videos/WorldMap2.mp4")}
+      source={require("../assets/videos/WorldMap2.mp4")}
       style={styles.backvideo}
-      // repeat={true}
+      muted={true}
+      repeat={true}
       resizeMode={"cover"}
       rate={1.0}
-      ignoresSilentSwitch={"obey"}
-      shouldPlay
-      isLooping
+      ignoreSilentSwitch={"obey"}
     />
 
-    <View style={styles.titlecontainer}>
-      <View style={styles.titlecontainer2}>
-        <Text style={[styles.title, {fontFamily: 'serif'}]}>ZombiGo</Text>
+      <View style={styles.titlecontainer}>
+        <View style={styles.titlecontainer2}>
+          <Text style={[styles.title, {fontFamily: 'serif'}]}>ZombiGo</Text>
+        </View>
       </View>
-    </View>
 
-    <View style = {styles.menu}>
-      <Text style={styles.textmenu}>Select mode</Text>
-      <TouchableOpacity
-        style={styles.btnPrimary}
-        onPress={() => navigation.navigate('Element')}
+      <View style = {styles.menu}>
+        <Text style={styles.textmenu}>Select mode</Text>
+        <TouchableOpacity
+          style={styles.btnPrimary}
+          onPress={() => navigation.navigate('Element')}
         >
-        <ImageBackground source={require('../assets/img/simulation.png')} style={styles.btnImageSim}>
-          <Text style={styles.btnText}>Simulation</Text>
-        </ImageBackground>
-      </TouchableOpacity>
+          <ImageBackground source={require('../assets/img/simulation.png')} style={styles.btnImageSim}>
+            <Text style={styles.btnText}>Simulation</Text>
+          </ImageBackground>
+        </TouchableOpacity>
 
-      {/* </WiggleBox> */}
-
-      <TouchableOpacity style={styles.btnPrimary}>
-        <ImageBackground source={require('../assets/img/arcade.png')} style={styles.btnImageArc}>
-          <Text style={styles.btnText}>Arcade</Text>
-        </ImageBackground>
-      </TouchableOpacity>
-    </View>
-
-    <View style = {styles.footercontainer}>
-      <Text style = {[styles.footerText, {flexDirection:'row'}]}>
-        <Text style = {{color:'white'}}>App created by </Text>
-        <Text style = {{color:'red'}} onPress={() => Linking.openURL('https://www.linkedin.com/in/kevin-nguma/')}>Kevin</Text>
-        <Text style = {{color:'white'}}>, </Text>
-        <Text style = {{color:'red'}} onPress={() => Linking.openURL('https://www.linkedin.com/in/oswald-quevillart/')}>Oswald </Text>
-        <Text style = {{color:'white'}}>and </Text>
-        <Text style = {{color:'red'}} onPress={() => Linking.openURL('https://www.linkedin.com/in/philippe-perechodov/')}>Philippe</Text>
-      </Text>
-      <Text style = {[styles.footerText, {color:'white'}]}>
-        ACS projet - October 2020
-      </Text>
-      <Text style = {[styles.footerText, {color:'red'}]} onPress={() => Linking.openURL('https://github.com/Sumpheus/Group_ZombieGo')}>
-        Github
-      </Text>
-    </View>
-
-   </View>
+        <TouchableOpacity
+          style={styles.btnPrimary}
+          onPress={() => navigation.navigate('Map')}
+        >
+          <ImageBackground source={require('../assets/img/arcade.png')} style={styles.btnImageArc}>
+            <Text style={styles.btnText}>Arcade</Text>
+          </ImageBackground>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   )
 }
-
 
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
+
     titlecontainer:{
       backgroundColor: 'transparent',
       flex:1,
       display: 'flex',
       justifyContent: 'center',
     },
+
     titlecontainer2:{
       display: 'flex',
       alignItems: 'center',
@@ -92,7 +74,7 @@ const styles = StyleSheet.create({
     title:{
       opacity: 1,
       fontSize: 80,
-      color: 'red',
+      color: '#850606',
     },
     menu:{
       flex: 4,
@@ -110,19 +92,8 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       margin: 30,
       flexDirection: 'row',
-      textShadowColor: 'red',
+      textShadowColor: '#850606',
       textShadowRadius: 10,
-    },
-    footercontainer: {
-      marginTop: 20,
-      backgroundColor: 'transparent',
-      flex: 1,
-    },
-    footerText: {
-      fontSize: 20,
-      marginBottom: 5,
-      marginTop: 5,
-      textAlign: 'center',
     },
     backvideo:{
       position: 'absolute',
@@ -162,3 +133,6 @@ const styles = StyleSheet.create({
       marginLeft: 40,
     },
  })
+
+
+export default Home;
