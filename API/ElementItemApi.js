@@ -33,3 +33,4 @@ export function getItemByElementIdFromApi(id) {
     .then((response) => response.json())
     .catch((error) => console.error(error));
 }
+
