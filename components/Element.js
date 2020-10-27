@@ -4,7 +4,7 @@ import { Component }  from 'react';
 import { StatusBar } from "react-native";
 import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking, AsyncStorage, FlatList, Image, ActivityIndicator } from 'react-native';
 import { Video, Audio } from 'expo-av';
-import { getElementIconFromApi, IPV4 } from './../API/ElementItemApi';
+import { getElementIconFromApi, APILINK } from './../API/ElementItemApi';
 
 
 class Element extends Component {
@@ -18,7 +18,7 @@ class Element extends Component {
   }
 
   componentDidMount() {
-    return fetch(IPV4 + '/api/v1/element', {
+    return fetch(APILINK + '/api/v1/element', {
       headers:  {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -116,7 +116,7 @@ resizeMode: 'cover',
       marginRight: 50,
       borderColor: "black",
       borderStyle:'solid',
-      borderWidth: 1,
+      borderWidth: 2,
       flexDirection: 'row',
       borderRadius: 10,
       justifyContent: 'center',
@@ -133,7 +133,7 @@ resizeMode: 'cover',
       alignItems: 'center',
     },
     title: {
-      color: 'black',
+      color: 'white',
       fontWeight: 'bold',
       fontSize: 24,
     },

@@ -1,8 +1,9 @@
-export const IPV4 = "http://172.21.201.27:8000"
+export const APILINK = "https://zombieapi.promo-41.codeur.online"
 
 // Pour faire apparaitre les icones des elements ou des items
 export function getElementIconFromApi(name) {
-  return IPV4 + '/images/' + name + '.png'
+  var name = name.toLowerCase();
+  return APILINK + '/images/' + name + '.png'
 }
 
 

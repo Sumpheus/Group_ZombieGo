@@ -36,6 +36,7 @@ const Inventory = () => {
               keyExtractor={(item) => item.id.toString()}
               renderItem={({item, index}) => {
                 if (item.number > 0) {
+                  console.log(item.title);
                   return (
                     <View style = {styles.item}>
                       <View style = {styles.viewTitle}><Text style = {styles.title}>{item.title}</Text></View>
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
     margin: 5,
     borderBottomColor: "black",
     borderStyle:'solid',
-    borderWidth: 4,
+    borderWidth: 2,
     height: 120,
     width: 120,
     borderRadius: 20,
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   viewTitle: {
-    alignItems: 'flex-start',
+    alignItems: 'center',
   },
   viewTitle2: {
     marginTop: 50,

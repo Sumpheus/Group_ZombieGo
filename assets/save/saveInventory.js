@@ -8,31 +8,31 @@ export default inventoryData = [
     {
         "id": 2,
         "title": "Disinfectant",
-        "number": 0,
+        "number": 1,
         "icon": "/disinfectant.png"
     },
     {
         "id": 3,
         "title": "Antibiotic",
-        "number": 0,
+        "number": 1,
         "icon": "/antibiotic.png"
     },
     {
         "id": 4,
         "title": "Analgesic",
-        "number": 0,
+        "number": 1,
         "icon": "analgesic.png"
     },
     {
         "id": 5,
         "title": "Water",
-        "number": 0,
+        "number": 1,
         "icon": "/water.png"
     },
     {
         "id": 6,
         "title": "Tin_can",
-        "number": 0,
+        "number": 1,
         "icon": "/tin_can.png"
     },
     {

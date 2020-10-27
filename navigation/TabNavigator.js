@@ -4,6 +4,7 @@ import { Component }  from 'react';
 import { StyleSheet, Image } from 'react-native';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MainStackNavigator, InventoryStackNavigator, CreditsStackNavigator} from "./StackNavigator.js";
+import { Fontisto } from '@expo/vector-icons';
 
 
 const Tab = createBottomTabNavigator();
@@ -28,10 +29,7 @@ const BottomTabNavigator = () => {
             fontWeight: 'bold',
           },
           tabBarIcon: () => {
-            return <Image
-              source={require('../assets/img/tent.png')}
-              style={styles.icon}
-              />
+            return <Fontisto name="tent" size={24} color="white" />
           }
 
         }}
