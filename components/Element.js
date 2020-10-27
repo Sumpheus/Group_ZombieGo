@@ -6,7 +6,6 @@ import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity
 import { Video, Audio } from 'expo-av';
 import { getElementIconFromApi, IPV4 } from './../API/ElementItemApi';
 
-// const IPV4 = "http://172.21.201.27:8000";
 
 class Element extends Component {
 
@@ -19,7 +18,7 @@ class Element extends Component {
   }
 
   componentDidMount() {
-    return fetch(IPV4 + '/api/v1/item', {
+    return fetch(IPV4 + '/api/v1/element', {
       headers:  {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
