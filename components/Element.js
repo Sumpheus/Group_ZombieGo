@@ -19,7 +19,7 @@ class Element extends Component {
   }
 
   componentDidMount() {
-    return fetch(IPV4 + '/api/v1/element', {
+    return fetch(IPV4 + '/api/v1/item', {
       headers:  {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -105,7 +105,8 @@ const styles = StyleSheet.create({
       left: 0,
       bottom: 0,
       right: 0,
-      opacity: 1,
+      opacity: 0.5,
+resizeMode: 'cover',
     },
     item: {
       backgroundColor: '#850606',
@@ -119,7 +120,6 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       flexDirection: 'row',
       borderRadius: 10,
-      opacity: 0.9,
       justifyContent: 'center',
       alignItems: 'center',
       textAlign: 'center',

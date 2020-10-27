@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StatusBar } from "react-native";
-import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking, Image } from 'react-native';
 import { useState, useEffect } from 'react';
 import { AppLoading } from 'expo';
 import { Video, Audio } from 'expo-av';
@@ -28,9 +28,7 @@ const Home = ({ navigation }) => {
       />
 
       <View style={styles.titlecontainer}>
-        <View style={styles.titlecontainer2}>
-          <Text style={[styles.title, {fontFamily: 'serif'}]}>ZombiGo</Text>
-        </View>
+        <Image style={styles.image} source={require('../assets/img/zombiGo.png')}/>
       </View>
 
       <View style = {styles.menu}>
@@ -62,17 +60,18 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
-
     titlecontainer:{
       backgroundColor: 'transparent',
       flex:1,
       display: 'flex',
       justifyContent: 'center',
     },
-
-    titlecontainer2:{
-      display: 'flex',
-      alignItems: 'center',
+    image: {
+       flex: 1,
+       width: null,
+       height: null,
+       resizeMode: 'contain',
+       paddingTop: 50,
     },
     title:{
       opacity: 1,
@@ -95,7 +94,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       margin: 30,
       flexDirection: 'row',
-      textShadowColor: '#850606',
+      textShadowColor: 'red',
       textShadowRadius: 10,
     },
     backvideo:{
@@ -104,7 +103,7 @@ const styles = StyleSheet.create({
       left: 0,
       bottom: 0,
       right: 0,
-      opacity: 1,
+      opacity: 0.5,
     },
     btnPrimary: {
       backgroundColor: 'transparent',

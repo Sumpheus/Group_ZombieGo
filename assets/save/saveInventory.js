@@ -2,19 +2,19 @@ export default inventoryData = [
     {
         "id": 1,
         "title": "Bandage",
-        "number": 5,
+        "number": 1,
         "icon": "/bandage.png"
     },
     {
         "id": 2,
         "title": "Disinfectant",
-        "number": 5,
+        "number": 0,
         "icon": "/disinfectant.png"
     },
     {
         "id": 3,
         "title": "Antibiotic",
-        "number": 5,
+        "number": 0,
         "icon": "/antibiotic.png"
     },
     {
@@ -50,7 +50,7 @@ export default inventoryData = [
     {
         "id": 9,
         "title": "Alcohol",
-        "number": 0,
+        "number": 4,
         "icon": "/alcohol.png"
     },
     {
@@ -62,7 +62,7 @@ export default inventoryData = [
     {
         "id": 11,
         "title": "Metal",
-        "number": 0,
+        "number": 7,
         "icon": "/metal.png"
     },
     {
@@ -110,13 +110,13 @@ export default inventoryData = [
     {
         "id": 19,
         "title": "Axe",
-        "number": 0,
+        "number": 5,
         "icon": "/axe.png"
     },
     {
         "id": 20,
         "title": "Knife",
-        "number": 0,
+        "number": 5,
         "icon": "/knife.png"
     },
     {
