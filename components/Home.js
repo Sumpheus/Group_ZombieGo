@@ -4,7 +4,8 @@ import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity
 import { useState, useEffect } from 'react';
 import { AppLoading } from 'expo';
 import { Video, Audio } from 'expo-av';
-import { WebView } from 'react-native-webview';
+// import Video from 'react-native-video';
+// import { WebView } from 'react-native-webview';
 
 
 const Home = ({ navigation }) => {
@@ -37,6 +38,7 @@ const Home = ({ navigation }) => {
         isLooping
         audioOnly
       />
+
       <View style={styles.container}>
         <Image style={styles.image} source={require('../assets/img/zombieGo.png')}/>
       </View>

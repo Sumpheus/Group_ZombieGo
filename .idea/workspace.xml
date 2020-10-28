@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28670159-d659-4b08-b239-e4f6fa24d0c1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Group_ZombieGo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Group_ZombieGo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/save/saveInventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/save/saveInventory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +46,10 @@
       <screen x="1600" y="-174" width="1920" height="1050" />
     </state>
     <state x="1680" y="-108" width="1736" height="866" key="AVDManager/0.0.1600.870/1600.-174.1920.1050@1600.-174.1920.1050" timestamp="1603790529441" />
+    <state x="1926" y="-66" key="SettingsEditor" timestamp="1603881877865">
+      <screen x="1600" y="-174" width="1920" height="1050" />
+    </state>
+    <state x="1926" y="-66" key="SettingsEditor/0.0.1600.870/1600.-174.1920.1050@1600.-174.1920.1050" timestamp="1603881877865" />
     <state x="2216" y="156" key="run.anything.popup" timestamp="1603698023204">
       <screen x="1600" y="-174" width="1920" height="1050" />
     </state>
