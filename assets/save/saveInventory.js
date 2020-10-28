@@ -2,37 +2,37 @@ export default inventoryData = [
     {
         "id": 1,
         "title": "Bandage",
-        "number": 5,
+        "number": 1,
         "icon": "/bandage.png"
     },
     {
         "id": 2,
         "title": "Disinfectant",
-        "number": 5,
+        "number": 1,
         "icon": "/disinfectant.png"
     },
     {
         "id": 3,
         "title": "Antibiotic",
-        "number": 5,
+        "number": 1,
         "icon": "/antibiotic.png"
     },
     {
         "id": 4,
         "title": "Analgesic",
-        "number": 0,
+        "number": 1,
         "icon": "analgesic.png"
     },
     {
         "id": 5,
         "title": "Water",
-        "number": 0,
+        "number": 1,
         "icon": "/water.png"
     },
     {
         "id": 6,
         "title": "Tin_can",
-        "number": 0,
+        "number": 1,
         "icon": "/tin_can.png"
     },
     {
@@ -50,7 +50,7 @@ export default inventoryData = [
     {
         "id": 9,
         "title": "Alcohol",
-        "number": 0,
+        "number": 4,
         "icon": "/alcohol.png"
     },
     {
@@ -62,7 +62,7 @@ export default inventoryData = [
     {
         "id": 11,
         "title": "Metal",
-        "number": 0,
+        "number": 7,
         "icon": "/metal.png"
     },
     {
@@ -80,43 +80,43 @@ export default inventoryData = [
     {
         "id": 14,
         "title": "Hammer",
-        "number": 0,
+        "number": 1,
         "icon": "/hammer.png"
     },
     {
         "id": 15,
         "title": "Saw",
-        "number": 0,
+        "number": 1,
         "icon": "/saw.png"
     },
     {
         "id": 16,
         "title": "Nail",
-        "number": 0,
+        "number": 1,
         "icon": "/nail.png"
     },
     {
         "id": 17,
         "title": "Screw",
-        "number": 0,
+        "number": 1,
         "icon": "/screw.png"
     },
     {
         "id": 18,
         "title": "Screwdriver",
-        "number": 0,
+        "number": 1,
         "icon": "/screwdriver.png"
     },
     {
         "id": 19,
         "title": "Axe",
-        "number": 0,
+        "number": 5,
         "icon": "/axe.png"
     },
     {
         "id": 20,
         "title": "Knife",
-        "number": 0,
+        "number": 5,
         "icon": "/knife.png"
     },
     {

@@ -4,10 +4,8 @@ import { Component }  from 'react';
 import { ListViewComponent, StatusBar } from "react-native";
 import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking, AsyncStorage, FlatList, Image, ActivityIndicator } from 'react-native';
 import { Video, Audio } from 'expo-av';
-import { getElementIconFromApi, IPV4 } from './../API/ElementItemApi';
+import { getElementIconFromApi, APILINK } from './../API/ElementItemApi';
 
-
-// const IPV4 = "http://172.21.201.27:8000";
 
 class Element extends Component {
 
@@ -20,7 +18,7 @@ class Element extends Component {
   }
 
   componentDidMount() {
-    return fetch(IPV4 + '/api/v1/element', {
+    return fetch(APILINK + '/api/v1/element', {
       headers:  {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -36,6 +34,10 @@ class Element extends Component {
       });
   }
 
+  onPress() {
+    return (<View><Text>Poil</Text></View>)
+  }
+
   render() {
     if (this.state.isLoading) {
       return (
@@ -46,6 +48,11 @@ class Element extends Component {
     } else {
       return (
         <View style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
+          <StatusBar
+            barStyle = "light-content"
+            hidden = {false}
+            backgroundColor = "black" // ou une couleur..à voir
+          />
           <Video
             source={require("./../assets/videos/Road.mp4")}
             style={styles.backvideo}
@@ -57,39 +64,37 @@ class Element extends Component {
             isLooping
           />
           <Video
-              source={require("./../assets/audio/OST1.mp3")}
-              style={styles.backsound}
-              repeat={true}
-              rate={1.0}
-              ignoresSilentSwitch={"obey"}
-              shouldPlay
-              isLooping
-              audioOnly
-            />
- 
+            source={require("./../assets/audio/simulationSound.mp3")}
+            style={styles.backsound}
+            repeat={true}
+            rate={1.0}
+            ignoresSilentSwitch={"obey"}
+            shouldPlay
+            isLooping
+            audioOnly
+          />
           <FlatList
-           
+
             style = {styles.needslist}
             data={this.state.elements}
             keyExtractor={(item, index) => item.id.toString()}
             renderItem={({item, index}) => {
               if (item.id != 6 && item.id != 7) {
                 return (
-
-                  <View style = {styles.item}>
-
+                  <TouchableOpacity
+                    style = {styles.item}
+                    onPress={() => this.onPress()}
+                  >
                     <Image style={styles.image} source={{uri: getElementIconFromApi(item.title)}}/>
-
                     <View style = {styles.viewTitle}>
                       <Text style = {styles.title}>{item.title}</Text>
                     </View>
-                  </View>
+                  </TouchableOpacity>
                 )
               }
             }}
-             
+
           />
-  
         </View>
       )
     }
@@ -113,6 +118,7 @@ const styles = StyleSheet.create({
       bottom: 0,
       right: 0,
       opacity: 1,
+      resizeMode: 'cover',
     },
     item: {
       backgroundColor: '#850606',
@@ -123,10 +129,9 @@ const styles = StyleSheet.create({
       marginRight: 50,
       borderColor: "black",
       borderStyle:'solid',
-      borderWidth: 1,
+      borderWidth: 2,
       flexDirection: 'row',
       borderRadius: 10,
-      opacity: 0.9,
       justifyContent: 'center',
       alignItems: 'center',
       textAlign: 'center',
@@ -135,13 +140,13 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     image: {
-      width: 30,
-      height: 30,
+      width: 50,
+      height: 50,
       marginRight: 10,
       alignItems: 'center',
     },
     title: {
-      color: 'black',
+      color: 'white',
       fontWeight: 'bold',
       fontSize: 24,
     },
