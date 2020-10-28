@@ -80,31 +80,31 @@ export default inventoryData = [
     {
         "id": 14,
         "title": "Hammer",
-        "number": 0,
+        "number": 1,
         "icon": "/hammer.png"
     },
     {
         "id": 15,
         "title": "Saw",
-        "number": 0,
+        "number": 1,
         "icon": "/saw.png"
     },
     {
         "id": 16,
         "title": "Nail",
-        "number": 0,
+        "number": 1,
         "icon": "/nail.png"
     },
     {
         "id": 17,
         "title": "Screw",
-        "number": 0,
+        "number": 1,
         "icon": "/screw.png"
     },
     {
         "id": 18,
         "title": "Screwdriver",
-        "number": 0,
+        "number": 1,
         "icon": "/screwdriver.png"
     },
     {

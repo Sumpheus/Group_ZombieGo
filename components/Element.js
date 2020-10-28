@@ -34,6 +34,10 @@ class Element extends Component {
       });
   }
 
+  onPress() {
+    return (<View><Text>Poil</Text></View>)
+  }
+
   render() {
     if (this.state.isLoading) {
       return (
@@ -43,7 +47,12 @@ class Element extends Component {
       )
     } else {
       return (
-        <ScrollView style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
+        <View style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
+          <StatusBar
+            barStyle = "light-content"
+            hidden = {false}
+            backgroundColor = "black" // ou une couleur..à voir
+          />
           <Video
             source={require("./../assets/videos/Road.mp4")}
             style={styles.backvideo}
@@ -55,34 +64,35 @@ class Element extends Component {
             isLooping
           />
           <Video
-              source={require("./../assets/audio/OST1.mp3")}
-              style={styles.backsound}
-              repeat={true}
-              rate={1.0}
-              ignoresSilentSwitch={"obey"}
-              shouldPlay
-              isLooping
-              audioOnly
-            />
+            source={require("./../assets/audio/simulationSound.mp3")}
+            style={styles.backsound}
+            repeat={true}
+            rate={1.0}
+            ignoresSilentSwitch={"obey"}
+            shouldPlay
+            isLooping
+            audioOnly
+          />
           <FlatList
             data={this.state.elements}
             keyExtractor={(item, index) => item.id.toString()}
             renderItem={({item, index}) => {
               if (item.id != 6 && item.id != 7) {
                 return (
-                  <View style = {styles.item}>
-
+                  <TouchableOpacity
+                    style = {styles.item}
+                    onPress={() => this.onPress()}
+                  >
                     <Image style={styles.image} source={{uri: getElementIconFromApi(item.title)}}/>
-
                     <View style = {styles.viewTitle}>
                       <Text style = {styles.title}>{item.title}</Text>
                     </View>
-                  </View>
+                  </TouchableOpacity>
                 )
               }
             }}
           />
-        </ScrollView>
+        </View>
       )
     }
   }
@@ -104,8 +114,8 @@ const styles = StyleSheet.create({
       left: 0,
       bottom: 0,
       right: 0,
-      opacity: 0.5,
-resizeMode: 'cover',
+      opacity: 1,
+      resizeMode: 'cover',
     },
     item: {
       backgroundColor: '#850606',
@@ -127,8 +137,8 @@ resizeMode: 'cover',
       alignItems: 'center',
     },
     image: {
-      width: 30,
-      height: 30,
+      width: 50,
+      height: 50,
       marginRight: 10,
       alignItems: 'center',
     },

@@ -17,7 +17,6 @@ const screenOptionStyle = {
     borderBottomColor: "black",
     borderStyle:'solid',
     borderBottomWidth: 2,
-
   },
   headerTintColor: "white",
   headerLeftTitle: "Back", // Ne semble pas fonctionner
@@ -42,7 +41,7 @@ const MainStackNavigator = () => {
         name="Element"
         component={Element}
         options={{
-          title:"What do you need ?",
+          title:"Select the type of object :",
           headerTransparent:false,
         }}
       />
@@ -67,7 +66,7 @@ const InventoryStackNavigator = () => {
         name="Inventory"
         component={Inventory}
         options={{
-          title:"Your inventory",
+          title:"Your backpack",
           headerTransparent:false,
         }}
       />

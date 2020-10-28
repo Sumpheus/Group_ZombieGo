@@ -14,21 +14,31 @@ const Home = ({ navigation }) => {
       <StatusBar
         barStyle = "light-content"
         hidden = {false}
-        backgroundColor = "black" // ou une couleur..à voir
+        backgroundColor = "transparent" // ou une couleur..à voir
+        translucent = {true}
       />
-
       <Video
         source={require("./../assets/videos/WorldMap2.mp4")}
         style={styles.backvideo}
+        repeat={true}
         resizeMode={"cover"}
         rate={1.0}
         ignoresSilentSwitch={"obey"}
         shouldPlay
         isLooping
       />
-
-      <View style={styles.titlecontainer}>
-        <Image style={styles.image} source={require('../assets/img/zombiGo.png')}/>
+      <Video
+        source={require("./../assets/audio/simulationSound.mp3")}
+        style={styles.backsound}
+        repeat={true}
+        rate={1.0}
+        ignoresSilentSwitch={"obey"}
+        shouldPlay
+        isLooping
+        audioOnly
+      />
+      <View style={styles.container}>
+        <Image style={styles.image} source={require('../assets/img/zombieGo.png')}/>
       </View>
 
       <View style = {styles.menu}>
@@ -60,18 +70,12 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
-    titlecontainer:{
-      backgroundColor: 'transparent',
-      flex:1,
-      display: 'flex',
-      justifyContent: 'center',
-    },
     image: {
        flex: 1,
        width: null,
-       height: null,
-       resizeMode: 'contain',
-       paddingTop: 50,
+       height: 100,
+       resizeMode: 'cover',
+       marginTop: 20,
     },
     title:{
       opacity: 1,
@@ -79,7 +83,7 @@ const styles = StyleSheet.create({
       color: '#850606',
     },
     menu:{
-      flex: 4,
+      flex: 1,
       display: 'flex',
       justifyContent: 'center',
     },
@@ -92,10 +96,8 @@ const styles = StyleSheet.create({
       fontSize: 30,
       color: 'white',
       textAlign: 'center',
-      margin: 30,
+      margin: 10,
       flexDirection: 'row',
-      textShadowColor: 'red',
-      textShadowRadius: 10,
     },
     backvideo:{
       position: 'absolute',
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
       left: 0,
       bottom: 0,
       right: 0,
-      opacity: 0.5,
+      opacity: 1,
     },
     btnPrimary: {
       backgroundColor: 'transparent',
@@ -118,6 +120,8 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       fontSize: 40,
       marginLeft: -200,
+      textShadowColor: 'red',
+      textShadowRadius: 10,
     },
     btnImageSim: {
       flex: 1,

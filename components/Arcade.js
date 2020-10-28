@@ -12,9 +12,12 @@ class Arcade extends Component {
   render() {
     return (
 
-      <ScrollView style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
-
-        {/* Background video   */}
+      <View style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
+        <StatusBar
+          barStyle = "light-content"
+          hidden = {false}
+          backgroundColor = "black" // ou une couleur..à voir
+        />
         <Video
           source={require("./../assets/videos/House.mp4")}
           style={styles.backvideo}
@@ -25,10 +28,8 @@ class Arcade extends Component {
           shouldPlay
           isLooping
         />
-
-        {/* Background Music from DAN TERMINUS - Inhert */}
         <Video
-          source={require("./../assets/audio/OST1.mp3")}
+          source={require("./../assets/audio/simulationSound.mp3")}
           style={styles.backsound}
           repeat={true}
           rate={1.0}
@@ -42,7 +43,7 @@ class Arcade extends Component {
           <Text>Arcade !!!!!!</Text>
         </View>
 
-      </ScrollView>
+      </View>
     )
   }
 }

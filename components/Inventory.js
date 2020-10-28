@@ -22,7 +22,7 @@ const Inventory = () => {
     const element = itemsNumbers[i];
       if (element > 0) {
       return (
-        <ScrollView style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
+        <View style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
           <ImageBackground
             source={require('../assets/img/inventoryBackground.jpg')}
             style={styles.imageBackground}
@@ -36,7 +36,6 @@ const Inventory = () => {
               keyExtractor={(item) => item.id.toString()}
               renderItem={({item, index}) => {
                 if (item.number > 0) {
-                  console.log(item.title);
                   return (
                     <View style = {styles.item}>
                       <View style = {styles.viewTitle}><Text style = {styles.title}>{item.title}</Text></View>
@@ -49,7 +48,7 @@ const Inventory = () => {
             />
           </View>
 
-        </ScrollView>
+        </View>
       )
     }
     else if (sum === 0){
@@ -88,7 +87,6 @@ const styles = StyleSheet.create({
     paddingLeft: 700,
     resizeMode: 'cover',
     height: '100%',
-    // flex: 1,
   },
   imageBackground2: {
     position: 'absolute',
