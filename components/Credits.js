@@ -18,14 +18,14 @@ const Credits = () => {
     {/* Nos noms */}
       <View style = {styles.footercontainer}>
         <Text style = {styles.footerText}>
-          <View style= {styles.CreatedBy}> 
-          <Text style = {{color:'black'}}>Created by : </Text>           
+          <View style= {styles.CreatedBy}>
+          <Text style = {{color:'black'}}>Created by : </Text>
           <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/kevin-nguma/')}>Kevin Nguma</Text>
           <Text style = {{color:'black'}}>, </Text>
           <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/oswald-quevillart/')}>Oswald Quevillart</Text>
           <Text style = {{color:'black'}}> and </Text>
           <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/philippe-perechodov/')}>Philippe Perechodov</Text>
-          </View>  
+          </View>
         </Text>
 
     {/* Copyright avec liens */}
@@ -76,10 +76,10 @@ const styles = StyleSheet.create({
     marginTop: 5,
     textAlign: 'center',
     opacity: 1,
-        
+
   },
   CreatedBy:{
-    flexDirection: "column",    
+    flexDirection: "column",
   },
   names:{
     color: "#850606",
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 25,
     flex: 1,
-    
+
   },
   Copyright:{
     borderStyle: "solid",
