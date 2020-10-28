@@ -7,37 +7,25 @@ import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity
 const Credits = () => {
   return (
     <View style = {styles.container}>
-
       <ImageBackground
         source={require('../assets/img/DoorZombies.jpg')}
         style={styles.BackgroundPic}
         resizeMode={"cover"}
         rate={1.0}
-      ></ImageBackground>
-
-    {/* Nos noms */}
-      <View style = {styles.footercontainer}>
-        <Text style = {styles.footerText}>
-          <View style= {styles.CreatedBy}> 
-          <Text style = {{color:'black'}}>Created by : </Text>           
-          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/kevin-nguma/')}>Kevin Nguma</Text>
-          <Text style = {{color:'black'}}>, </Text>
-          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/oswald-quevillart/')}>Oswald Quevillart</Text>
-          <Text style = {{color:'black'}}> and </Text>
-          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/philippe-perechodov/')}>Philippe Perechodov</Text>
-          </View>  
-        </Text>
-
-    {/* Copyright avec liens */}
-        <View style={styles.Copyright}>
-          <Text style = {[styles.footerText, {color:'black'}]}>
-            ACS project made in October 2020
-          </Text>
-          <Text style = {[styles.footerText, {color:'#850606'}]} onPress={() => Linking.openURL('https://github.com/Sumpheus/Group_ZombieGo')}>
-          © ZombieGo
-          </Text>
+      >
+        <View style= {styles.CreatedBy}>
+          <Text style = {styles.interNames}>Created by</Text>
+          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/kevin-nguma/')}>Kevin NGUMA</Text>
+          <Text style = {styles.interNames}>and</Text>
+          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/oswald-quevillart/')}>Oswald QUEVILLART</Text>
+          <Text style = {styles.interNames}>and</Text>
+          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/philippe-perechodov/')}>Philippe PERECHODOV</Text>
         </View>
-      </View>
+        <View style={styles.Copyright}>
+          <Text style = {[styles.footerText, {color:'white'}]}>ACS project made in October 2020</Text>
+          <Text style = {[styles.footerText, {color:'#850606'}]} onPress={() => Linking.openURL('https://github.com/Sumpheus/Group_ZombieGo')}>© ZombieGo</Text>
+        </View>
+      </ImageBackground>
     </View>
   )
 }
@@ -55,51 +43,42 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     height: '100%',
   },
-  footercontainer: {
-    flex: 1,
-    justifyContent: "center",
+  CreatedBy:{
+    flex: 2,
+    justifyContent: "flex-end",
     alignItems: "center",
-    textAlign: "center",
-    position: "absolute",
-    borderStyle: "solid",
-    borderBottomColor: "black",
-    borderWidth: 2,
-    backgroundColor: 'white',
-    opacity: 0.5,
-    width: "100%",
-    height: "100%",
-
   },
   footerText: {
-    fontSize: 20,
-    marginBottom: 5,
-    marginTop: 5,
-    textAlign: 'center',
-    opacity: 1,
-        
-  },
-  CreatedBy:{
-    flexDirection: "column",    
+    fontSize: 24,
+    marginBottom: 10,
   },
   names:{
-    color: "#850606",
+    color: "white",
     borderStyle: "solid",
     borderWidth: 2,
     borderBottomColor: "black",
     borderRadius: 5,
-    backgroundColor: "blue",
+    backgroundColor: "#850606",
     textAlign: "center",
-    fontSize: 25,
-    flex: 1,
-    
+    fontSize: 26,
+    paddingBottom: 5,
+    paddingTop: 5,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  interNames:{
+    color: "white",
+    textAlign: "center",
+    fontSize: 20,
+    textShadowColor: 'red',
+    textShadowRadius: 10,
   },
   Copyright:{
-    borderStyle: "solid",
-    borderBottomColor: "black",
-    backgroundColor: "yellow",
-    borderWidth: 2,
-    width: "100%",
-        
+    flex: 1,
+    backgroundColor: "transparent",
+    justifyContent: "flex-end",
+    marginBottom: 20,
+    alignItems: "center",
   },
 });
 
