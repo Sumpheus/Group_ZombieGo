@@ -74,8 +74,6 @@ class Element extends Component {
             audioOnly
           />
           <FlatList
-
-            style = {styles.needslist}
             data={this.state.elements}
             keyExtractor={(item, index) => item.id.toString()}
             renderItem={({item, index}) => {
@@ -93,7 +91,6 @@ class Element extends Component {
                 )
               }
             }}
-
           />
         </View>
       )
