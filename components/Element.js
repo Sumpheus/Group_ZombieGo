@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { Component }  from 'react';
-import { StatusBar } from "react-native";
+import { ListViewComponent, StatusBar } from "react-native";
 import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking, AsyncStorage, FlatList, Image, ActivityIndicator } from 'react-native';
 import { Video, Audio } from 'expo-av';
 import { getElementIconFromApi, APILINK } from './../API/ElementItemApi';
@@ -74,6 +74,8 @@ class Element extends Component {
             audioOnly
           />
           <FlatList
+
+            style = {styles.needslist}
             data={this.state.elements}
             keyExtractor={(item, index) => item.id.toString()}
             renderItem={({item, index}) => {
@@ -91,6 +93,7 @@ class Element extends Component {
                 )
               }
             }}
+
           />
         </View>
       )
@@ -104,10 +107,10 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
-    container2: {
-      flex: 1,
-      justifyContent: 'center',
-    },
+    // container2: {
+    //   flex: 1,
+    //   justifyContent: 'center',
+    // },
     backvideo: {
       position: 'absolute',
       top: 0,
