@@ -14,9 +14,12 @@ const Stack = createStackNavigator();
 const screenOptionStyle = {
   headerStyle: {
     backgroundColor: "#850606",
+    borderBottomColor: "black",
+    borderStyle:'solid',
+    borderBottomWidth: 2,
   },
   headerTintColor: "white",
-  headerBackTitle: "Back", // Ne semble pas fonctionner
+  headerLeftTitle: "Back", // Ne semble pas fonctionner
   headerTitleStyle:{
     fontWeight: 'bold',
   },
@@ -38,7 +41,7 @@ const MainStackNavigator = () => {
         name="Element"
         component={Element}
         options={{
-          title:"What do you need ?",
+          title:"Select the type of object :",
           headerTransparent:false,
         }}
       />
@@ -63,7 +66,7 @@ const InventoryStackNavigator = () => {
         name="Inventory"
         component={Inventory}
         options={{
-          title:"Your inventory",
+          title:"Your backpack",
           headerTransparent:false,
         }}
       />

@@ -56,7 +56,6 @@ getData = async () => {
     if(value !== null) {
       var parsedValue = JSON.parse(value);
       this.setState({inventory: parsedValue})
-      console.log(value)
     }
   } catch(e) {
     // error reading value
@@ -67,7 +66,6 @@ storeData = async (value) => {
     var value = this.state.inventory
     const jsonValue = JSON.stringify(value)
     await AsyncStorage.setItem('@storage_Key', jsonValue)
-    console.log(jsonValue)
   } catch (e) {
     // saving error
   }
@@ -153,22 +151,33 @@ markerEvent(){
       var numberOfItem = items.length,
       randomItem = Math.floor(Math.random() * (numberOfItem - 1) + 1);
       this.setState({loot: items[randomItem]});
+      //fonction recupération de l'objet dans l'inventaire
+      var addNumber = this.state.loot.number = 1;
+      var invId = []
+      var item = this.state.loot[invId]
       var addToInventory = this.state.inventory.concat(this.state.loot);
+       var number = 1
+      for (let i = 0; i < this.state.inventory.length; i++) {
+        const element = this.state.inventory[i].id;
+        invId.push(element)
+        
+      }
       // message d'alert pour récupérer ou non l'objet
       Alert.alert(
         //titre
         'LOOT:',
-
         //body
         'do you want take '+ this.state.loot.title + ' ?',
         [
           {
             text: 'Yes',
-            onPress: () => {this.setState({inventory : addToInventory}),this.storeData()}
+            onPress: () => {
+              this.setState({inventory : addToInventory}),this.storeData(),console.log(this.state.inventory)
+            }
           },
           {
             text: 'No',
-            onPress: () => this.storeData()
+            onPress: () => {this.setState({inventory : []}),this.storeData()}
           },
         ],
         {cancelable: false},
@@ -202,7 +211,6 @@ requestLocationPermission = async () => {
 render() {
   return (
     <MapView
-    
       style={styles.map}
       showsUserLocation={true}
       followsUserLocation={true}
@@ -211,7 +219,7 @@ render() {
                 longitude: this.state.region.longitude,
                 latitudeDelta: LATITUDE_DELTA,
                 longitudeDelta: LONGITUDE_DELTA
-              }}>
+      }}>
         <MapView.Marker  coordinate={{longitude: this.state.markers.longitude, latitude: this.state.markers.latitude}}
         onPress={ () => this.markerEvent()}/>
       </MapView>

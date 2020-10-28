@@ -1,9 +1,7 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { Component }  from 'react';
-
-import { StatusBar } from "react-native";
-import { StyleSheet, View, Text, FlatList, SafeAreaView, Image, List } from 'react-native';
+import { Dimensions, StyleSheet, View, Text, FlatList, SafeAreaView, Image, ActivityIndicator, ImageBackground, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage'
 
 
@@ -27,7 +25,6 @@ class Inventory extends Component {
       if(value !== null) {
         var parsedValue = JSON.parse(value);
         this.setState({inventory: parsedValue})
-        console.log(value)
       }
     } catch(e) {
       // error reading value
@@ -39,27 +36,37 @@ class Inventory extends Component {
   }
   
 
-  render() {
-    if (this.state.inventory !== null) {
+  render() { 
+    if (Array.isArray(this.state.inventory) && this.state.inventory.length) {
     return (
-      <View style = {styles.container}>
+      
+      <View style = {styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
+        <ImageBackground
+            source={require('../assets/img/inventoryBackground.jpg')}
+            style={styles.imageBackground}
+            resizeMode={"cover"}
+            rate={1.0}
+          ></ImageBackground>
+        <View style = {styles.container2}>
       <FlatList
+        numColumns={3}
         data={this.state.inventory}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item, index) => String(index)}
         renderItem={({item, index}) => {
             return (
               <View style = {styles.item}>
                 <View style = {styles.viewTitle}><Text style = {styles.title}>{item.title}</Text></View>
                 <Image style={styles.image} source={{uri: this.getElementIconFromApi(item.title)}}/>
-                <View style = {styles.viewNumber}><Text style = {styles.number}>{item.id}</Text></View>
+                <View style = {styles.viewNumber}><Text style = {styles.number}>x {item.number}</Text></View>
               </View>
             )
         }}
       />
       </View>
+      </View>
     )
   } 
-  else if (this.state.inventory.isEmpty()){
+  else {
     return (
       <View style = {styles.container2}>
         <View style = {styles.item2}>
@@ -80,46 +87,75 @@ const styles = StyleSheet.create({
   },
   container2: {
     flex: 1,
+    alignItems: 'center',
+  },
+  imageBackground: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    paddingLeft: 700,
+    resizeMode: 'cover',
+    height: '100%',
+  },
+  imageBackground2: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    opacity: 1,
+    paddingLeft: 450,
+    resizeMode: 'cover',
   },
   item: {
     backgroundColor: '#850606',
     padding: 10,
-    margin: 10,
+    margin: 5,
     borderBottomColor: "black",
     borderStyle:'solid',
     borderWidth: 2,
-    height: 170,
-    width: 170,
-    // alignItems: 'center',
+    height: 120,
+    width: 120,
+    borderRadius: 20,
   },
   item2: {
     backgroundColor: 'transparent',
     alignItems: 'center',
   },
   viewTitle: {
-    alignItems: 'flex-start',
+    alignItems: 'center',
   },
   viewTitle2: {
     marginTop: 50,
   },
   viewNumber: {
+    alignItems: 'flex-end',
+    marginTop: -30,
   },
   image: {
-    width: 80,
-    height: 80,
-    marginLeft: 35,
+    width: 60,
+    height: 60,
     alignItems: 'center',
   },
   image2: {
     width: 150,
     height: 150,
-    marginTop: 50,
+    marginTop: 30,
+    marginLeft: 130,
   },
   title: {
-    color: 'red',
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
+    marginBottom: 10,
+  },
+  title2: {
+    color: 'black',
     fontWeight: 'bold',
     fontSize: 20,
-    marginBottom: 10,
+    marginLeft: 130,
   },
   number: {
     color: 'white',
