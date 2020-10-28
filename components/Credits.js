@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { Component }  from 'react';
 import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking, Dimensions } from 'react-native';
+import { Fontisto, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 const Credits = () => {
@@ -15,15 +16,15 @@ const Credits = () => {
       >
         <View style= {styles.CreatedBy}>
           <Text style = {styles.interNames}>Created by</Text>
-          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/kevin-nguma/')}>Kevin NGUMA</Text>
+          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/kevin-nguma/')}>Kevin NGUMA <AntDesign name="linkedin-square" size={16} color="white"/></Text>
           <Text style = {styles.interNames}>and</Text>
-          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/oswald-quevillart/')}>Oswald QUEVILLART</Text>
+          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/oswald-quevillart/')}>Oswald QUEVILLART <AntDesign name="linkedin-square" size={16} color="white"/></Text>
           <Text style = {styles.interNames}>and</Text>
-          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/philippe-perechodov/')}>Philippe PERECHODOV</Text>
+          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/philippe-perechodov/')}>Philippe PERECHODOV <AntDesign name="linkedin-square" size={16} color="white"/></Text>
         </View>
         <View style={styles.Copyright}>
           <Text style = {[styles.footerText, {color:'white'}]}>ACS project made in October 2020</Text>
-          <Text style = {[styles.footerText, {color:'#850606'}]} onPress={() => Linking.openURL('https://github.com/Sumpheus/Group_ZombieGo')}>© ZombieGo</Text>
+          <Text style = {[styles.footerText, {color:'#850606', fontWeight: 'bold'}]} onPress={() => Linking.openURL('https://github.com/Sumpheus/Group_ZombieGo')}><AntDesign name="github" size={28} color="#850606" /> ZombieGo</Text>
         </View>
       </ImageBackground>
     </View>
@@ -51,6 +52,7 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: 24,
     marginBottom: 10,
+    textAlign: "center",
   },
   names:{
     color: "white",
@@ -69,16 +71,17 @@ const styles = StyleSheet.create({
   interNames:{
     color: "white",
     textAlign: "center",
-    fontSize: 20,
+    fontSize: 24,
     textShadowColor: 'red',
     textShadowRadius: 10,
+    marginBottom: 10,
+    marginTop: 10,
   },
   Copyright:{
     flex: 1,
     backgroundColor: "transparent",
     justifyContent: "flex-end",
     marginBottom: 20,
-    alignItems: "center",
   },
 });
 
