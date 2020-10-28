@@ -9,10 +9,10 @@ const Credits = () => {
   return (
     <View style = {styles.container}>
 
-    <ScrollView>
-    <ImageBackground source={image} style={styles.backpic, styles.imgcontainer}>      
-    </ImageBackground>
-    </ScrollView>
+      <ScrollView>
+        <ImageBackground source={image} style={styles.backpic, styles.imgcontainer}>
+        </ImageBackground>
+      </ScrollView>
 
 
       <View style = {styles.footercontainer}>

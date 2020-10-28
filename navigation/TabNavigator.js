@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Component }  from 'react';
 import { StyleSheet, Image } from 'react-native';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+// import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { MainStackNavigator, InventoryStackNavigator, CreditsStackNavigator} from "./StackNavigator.js";
 import { Fontisto, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -19,21 +19,21 @@ const BottomTabNavigator = () => {
     activeColor="red"
       labelStyle={{ fontSize: 12 }}
       style={{ backgroundColor: 'tomato' }}
-    // tabBarOptions={{
-    //   activeTintColor: '#850606',
-    //   inactiveTintColor: 'black',
-    //   activeBackgroundColor: '#696969',
-    //   inactiveBackgroundColor: '#696969',
-    //   style: {
-    //     height: 60,
-    //     borderTopWidth: 1,
-    //     borderTopColor: 'black',
-    //   },
-    //   labelStyle: {
-    //     fontSize: 16,
-    //     fontWeight: 'bold',
-    //   },
-    // }}
+    tabBarOptions={{
+      activeTintColor: '#850606',
+      inactiveTintColor: 'black',
+      activeBackgroundColor: '#696969',
+      inactiveBackgroundColor: '#696969',
+      style: {
+        height: 60,
+        borderTopWidth: 1,
+        borderTopColor: 'black',
+      },
+      labelStyle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+      },
+    }}
 
 
 
