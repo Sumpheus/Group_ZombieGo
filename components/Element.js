@@ -1,10 +1,11 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { Component }  from 'react';
-import { StatusBar } from "react-native";
+import { ListViewComponent, StatusBar } from "react-native";
 import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking, AsyncStorage, FlatList, Image, ActivityIndicator } from 'react-native';
 import { Video, Audio } from 'expo-av';
 import { getElementIconFromApi, IPV4 } from './../API/ElementItemApi';
+
 
 // const IPV4 = "http://172.21.201.27:8000";
 
@@ -44,7 +45,7 @@ class Element extends Component {
       )
     } else {
       return (
-        <ScrollView style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
+        <View style ={styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
           <Video
             source={require("./../assets/videos/Road.mp4")}
             style={styles.backvideo}
@@ -65,12 +66,16 @@ class Element extends Component {
               isLooping
               audioOnly
             />
+ 
           <FlatList
+           
+            style = {styles.needslist}
             data={this.state.elements}
             keyExtractor={(item, index) => item.id.toString()}
             renderItem={({item, index}) => {
               if (item.id != 6 && item.id != 7) {
                 return (
+
                   <View style = {styles.item}>
 
                     <Image style={styles.image} source={{uri: getElementIconFromApi(item.title)}}/>
@@ -82,8 +87,10 @@ class Element extends Component {
                 )
               }
             }}
+             
           />
-        </ScrollView>
+  
+        </View>
       )
     }
   }
@@ -95,10 +102,10 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
-    container2: {
-      flex: 1,
-      justifyContent: 'center',
-    },
+    // container2: {
+    //   flex: 1,
+    //   justifyContent: 'center',
+    // },
     backvideo: {
       position: 'absolute',
       top: 0,

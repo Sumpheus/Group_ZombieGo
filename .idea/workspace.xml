@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28670159-d659-4b08-b239-e4f6fa24d0c1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Group_ZombieGo.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/ElementItemApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/API/ElementItemApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/save/saveInventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/save/saveInventory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Arcade.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Arcade.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Credits.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Credits.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Element.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Element.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/GetElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/GetElement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Inventory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/navigation/StackNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/StackNavigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/navigation/TabNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/TabNavigator.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +26,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -53,10 +42,19 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1680" y="-108" width="1736" height="866" key="AVDManager" timestamp="1603698727512">
-      <screen x="1600" y="-174" width="1920" height="1050" />
+    <state x="574" y="257" key="#Notifications" timestamp="1603707633214">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state x="574" y="257" key="#Notifications/0.0.1366.768/1366.0.1920.1080@0.0.1366.768" timestamp="1603707633214" />
+    <state x="57" y="48" width="1236" height="634" key="AVDManager" timestamp="1603784572520">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="57" y="48" width="1236" height="634" key="AVDManager/0.0.1366.768/1366.0.1920.1080@0.0.1366.768" timestamp="1603784572520" />
     <state x="1680" y="-108" width="1736" height="866" key="AVDManager/0.0.1600.870/1600.-174.1920.1050@1600.-174.1920.1050" timestamp="1603698727512" />
+    <state x="168" y="42" key="SettingsEditor" timestamp="1603784397897">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="168" y="42" key="SettingsEditor/0.0.1366.768/1366.0.1920.1080@0.0.1366.768" timestamp="1603784397896" />
     <state x="2216" y="156" key="run.anything.popup" timestamp="1603698023204">
       <screen x="1600" y="-174" width="1920" height="1050" />
     </state>
