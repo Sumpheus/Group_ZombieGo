@@ -35,7 +35,8 @@ export default class Map extends React.Component {
       },
           data: [],
           loot: [],
-          inventory: []
+          inventory: [],
+          eventAlly: []
           }
     }   
 
@@ -47,6 +48,7 @@ componentDidMount() {
   this.getCoords(),
   this.getRandomMarker(),
   this.fetchData(),
+  this.fetchElement(),
   this.getData()
 }
 getData = async () => {
@@ -84,7 +86,12 @@ fetchData = async()=>{
   randomItem = Math.floor(Math.random() * (numberOfItem - 1) + 1);
   this.setState({loot: items[randomItem]});
 }
-
+fetchElement = async()=>{
+  //data
+  const response = await fetch('http://172.21.201.18:8000/api/v1/element')
+  const allyEvent = await response.json()
+  this.setState({eventAlly:allyEvent});
+}
   // Coordonnées de l'utilisateur et mise à jour en temps réelle
 getCoords(){
   // Coordonnées de l'utilisateur
@@ -152,16 +159,72 @@ markerEvent(){
       randomItem = Math.floor(Math.random() * (numberOfItem - 1) + 1);
       this.setState({loot: items[randomItem]});
       //fonction recupération de l'objet dans l'inventaire
-      var addNumber = this.state.loot.number = 1;
-      var invId = []
-      var item = this.state.loot[invId]
+      var enemyDetection = this.state.loot;
+      var item = this.state.loot.element;
+      var allyDonation = this.state.eventAlly
+      var numberOfElement = allyDonation[1].Items.length
+      var randomDonation = Math.floor(Math.random() * (numberOfElement - 1) + 1);
       var addToInventory = this.state.inventory.concat(this.state.loot);
-       var number = 1
-      for (let i = 0; i < this.state.inventory.length; i++) {
-        const element = this.state.inventory[i].id;
-        invId.push(element)
-        
+      var addDonation = this.state.inventory.concat(allyDonation[1].Items[randomDonation])
+      var getInventoryItem = this.state.inventory
+      
+      
+      if (item.title === "Ennemy") {
+        if(enemyDetection.title === "Zombi"){
+          for (let i = 0; i < getInventoryItem.length; i++) {
+            const element = getInventoryItem[i];
+            if (element.element.title ==="Weapon") {
+              alert("Un zombie vous attaque. Vous survivez grâce à l'une de vos armes !")
+            }
+            else{
+              alert("Un zombie vous surprend. Vous n'êtes hélas pas armé. C'est malheureusement la fin pour vous.")
+              {this.setState({inventory : []}),this.storeData()}
+            }
+          }
+         }
+        else if(enemyDetection.title === "Dangerous_animal"){
+          for (let i = 0; i < getInventoryItem.length; i++) {
+            const element = getInventoryItem[i];
+            if (element.element.title ==="Weapon") {
+              alert("Un animal sauvage se rue sur vous. Heuresement pour vous, vous étiez prêt... Vous sortez une de vos arme et abattez l'animal! ")
+            }
+            else{
+              alert("Un animal sauvage vous attaque. Vous n'êtes hélas pas armé. C'est malheureusement la fin pour vous.")
+              {this.setState({inventory : []}),this.storeData()}
+            }
+          }
+        }
+        else if(enemyDetection.title === "Trap"){
+          var roulette = getRandomInt(2)
+          if (roulette === 0) {
+            alert("Vous marchez prudemment... Quand soudain vous regardez à vos pieds. C'était moins une! Quelqu'un à poser un piège et vous y échappé de peu!")
+          }
+          else{
+            alert("Vous manquez d'attention... Malheureusement pour vous, vous tombez dans un piège... C'est la fin de votre avneture!")
+            {this.setState({inventory : []}),this.storeData()}
+          }
+        }
+        else if(enemyDetection.title === "Biohazard"){
+          var roulette = getRandomInt(2)
+          if (roulette === 0) {
+            alert("Grâce à vos magnifiques poil de nez, le virus qui à décimer une grande partie de la population ne parvient pas à pénétrer vore organisme!")
+          }
+          else{
+            alert("Le danger n'est pas toujours visible à l'oeil nu... Cette pensée vous stress. Vous prenez une grand inspiration, hhélas en faisant cela vous aspirez des particules de virus... Vous voila devenu un Zombie...")
+            {this.setState({inventory : []}),this.storeData()}
+          }
+        }
+       }
+      if (item.title === "Ally") {
+        if(item.title === "Animal"){
+          alert('Vous apercevez un petit animal inoffensif. Ce dernier fuit en vous voyant')
+        }
+        else{
+          alert("Vous trouvez un camp de survivant. l'un d'entre eux s'approche et vous offre un peu de nourriture." )
+          this.setState({inventory: addDonation}), this.storeData()
+        }
       }
+      else if(item.title !== "Ennemy" && item.title !== "Ally"){
       // message d'alert pour récupérer ou non l'objet
       Alert.alert(
         //titre
@@ -172,7 +235,7 @@ markerEvent(){
           {
             text: 'Yes',
             onPress: () => {
-              this.setState({inventory : addToInventory}),this.storeData(),console.log(this.state.inventory)
+              this.setState({inventory : addToInventory}),this.storeData()
             }
           },
           {
@@ -186,10 +249,9 @@ markerEvent(){
       //créer un nouveau objectif
       this.getRandomMarker();
       }
-    
-    else{
-      alert("Vous n'êtes pas assez proche du point d'intérêt.")
     }
+    
+
 }
 
 requestLocationPermission = async () => {
