@@ -31,70 +31,71 @@ export default class Map extends React.Component {
         longitudeDelta: LONGITUDE_DELTA
       },
       markers: {
-            latitude: 0.1,
-           longitude:0.1
+        latitude: 0.1,
+        longitude:0.1
       },
-          data: [],
-          loot: [],
-          inventory: [],
-          eventAlly: []
-          }
+      data: [],
+      loot: [],
+      inventory: [],
+      eventAlly: []
     }
+  }
 
+  // Chargement des fonctions avant rendu
+  componentDidMount() {
+    this.getCoords(),
+    this.getRandomMarker(),
+    this.fetchData(),
+    this.fetchElement(),
+    this.getData()
+  }
 
-
-
-// Chargement des fonctions avant rendu
-componentDidMount() {
-  this.getCoords(),
-  this.getRandomMarker(),
-  this.fetchData(),
-  this.fetchElement(),
-  this.getData()
-}
-getData = async () => {
-  try {
-    var value = []
-    value = await AsyncStorage.getItem('@storage_Key')
-    if(value !== null) {
-      var parsedValue = JSON.parse(value);
-      this.setState({inventory: parsedValue})
+  getData = async () => {
+    try {
+      var value = []
+      value = await AsyncStorage.getItem('@storage_Key')
+      if(value !== null) {
+        var parsedValue = JSON.parse(value);
+        this.setState({inventory: parsedValue})
+      }
+    } catch(e) {
+      // error reading value
     }
-  } catch(e) {
-    // error reading value
   }
-}
-storeData = async (value) => {
-  try {
-    var value = this.state.inventory
-    const jsonValue = JSON.stringify(value)
-    await AsyncStorage.setItem('@storage_Key', jsonValue)
-  } catch (e) {
-    // saving error
-  }
-}
 
-// récupération des données de l'API dans le state data et dans le state loot
-fetchData = async()=>{
-  const data = []
-  //data
-  const response = await fetch(APILINK + '/api/v1/item')
-  const test = await response.json()
-  this.setState({data:test});
-  //loot
-  const items = this.state.data;
-  var numberOfItem = items.length,
-  randomItem = Math.floor(Math.random() * (numberOfItem - 1) + 1);
-  this.setState({loot: items[randomItem]});
-}
-fetchElement = async()=>{
-  //data
-  const response = await fetch(APILINK + '/api/v1/element')
-  const allyEvent = await response.json()
-  this.setState({eventAlly:allyEvent});
-}
+  storeData = async (value) => {
+    try {
+      var value = this.state.inventory
+      const jsonValue = JSON.stringify(value)
+      await AsyncStorage.setItem('@storage_Key', jsonValue)
+    } catch (e) {
+      // saving error
+    }
+  }
+
+  // récupération des données de l'API dans le state data et dans le state loot
+  fetchData = async()=>{
+    const data = []
+    //data
+    const response = await fetch(APILINK + '/api/v1/item')
+    const test = await response.json()
+    this.setState({data:test});
+    //loot
+    const items = this.state.data;
+    var numberOfItem = items.length,
+    randomItem = Math.floor(Math.random() * (numberOfItem - 1) + 1);
+    this.setState({loot: items[randomItem]});
+  }
+
+  fetchElement = async()=>{
+    //data
+    const response = await fetch(APILINK + '/api/v1/element')
+    const allyEvent = await response.json()
+    this.setState({eventAlly:allyEvent});
+  }
+
   // Coordonnées de l'utilisateur et mise à jour en temps réelle
-getCoords(){
+  getCoords(){
   // Coordonnées de l'utilisateur
   Geolocation.getCurrentPosition(position => {
     var initialRegion = {
@@ -306,8 +307,6 @@ render() {
                 latitudeDelta: LATITUDE_DELTA,
                 longitudeDelta: LONGITUDE_DELTA
       }}>
-        <MapView.Marker  coordinate={{longitude: this.state.markers.longitude, latitude: this.state.markers.latitude}}
-        onPress={ () => this.markerEvent()}/>
         <MapView.Marker  coordinate={{longitude: this.state.markers.longitude, latitude: this.state.markers.latitude}}
         onPress={ () => this.markerEvent()}/>
       </MapView>
