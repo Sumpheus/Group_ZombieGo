@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Component }  from 'react';
 import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking, Dimensions } from 'react-native';
-import { Fontisto, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 
 const Credits = () => {

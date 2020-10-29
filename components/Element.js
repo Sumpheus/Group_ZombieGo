@@ -104,10 +104,10 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
-    // container2: {
-    //   flex: 1,
-    //   justifyContent: 'center',
-    // },
+    container2: {
+      flex: 1,
+      justifyContent: 'center',
+    },
     backvideo: {
       position: 'absolute',
       top: 0,
