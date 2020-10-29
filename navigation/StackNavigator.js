@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from '../components/Home.js';
 import Element from '../components/Element.js';
+import Item from '../components/Item.js';
 import Arcade from '../components/Arcade.js';
 import Map from '../components/Map.js';
 import Inventory from '../components/Inventory.js';
@@ -43,6 +44,15 @@ const MainStackNavigator = () => {
         component={Element}
         options={{
           title:"Select the type of object :",
+          headerTransparent:false,
+        }}
+      />
+
+      <Stack.Screen
+        name="Item"
+        component={Element}
+        options={{
+          title:"What do you need ?",
           headerTransparent:false,
         }}
       />
