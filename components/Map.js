@@ -167,6 +167,8 @@ markerEvent(){
       var addToInventory = this.state.inventory.concat(this.state.loot);
       var addDonation = this.state.inventory.concat(allyDonation[1].Items[randomDonation])
       var getInventoryItem = this.state.inventory
+      var haveCondition = false
+      var roulette = Math.floor(Math.random() * Math.floor(2));
       
       
       if (item.title === "Ennemy") {
@@ -174,28 +176,46 @@ markerEvent(){
           for (let i = 0; i < getInventoryItem.length; i++) {
             const element = getInventoryItem[i];
             if (element.element.title ==="Weapon") {
-              alert("Un zombie vous attaque. Vous survivez grâce à l'une de vos armes !")
+              if (roulette = 1) {
+                getInventoryItem.splice(i)
+                this.setState({inventory : getInventoryItem})
+                this.storeData()
+              }
+              haveCondition = true
+              break
             }
-            else{
-              alert("Un zombie vous surprend. Vous n'êtes hélas pas armé. C'est malheureusement la fin pour vous.")
-              {this.setState({inventory : []}),this.storeData()}
-            }
+          }
+          if (haveCondition === true) {
+            alert("Un zombie vous attaque. Vous survivez grâce à l'une de vos armes !")
+          }
+          else{
+            alert("Un zombie vous surprend. Vous n'êtes hélas pas armé. C'est malheureusement la fin pour vous.")
+            {this.setState({inventory : []}),this.storeData()}
           }
          }
         else if(enemyDetection.title === "Dangerous_animal"){
           for (let i = 0; i < getInventoryItem.length; i++) {
             const element = getInventoryItem[i];
             if (element.element.title ==="Weapon") {
-              alert("Un animal sauvage se rue sur vous. Heuresement pour vous, vous étiez prêt... Vous sortez une de vos arme et abattez l'animal! ")
+              if (roulette = 1) {
+                getInventoryItem.splice(i)
+                this.setState({inventory : getInventoryItem})
+                this.storeData()
+              }
+              haveCondition = true
+              break
             }
-            else{
-              alert("Un animal sauvage vous attaque. Vous n'êtes hélas pas armé. C'est malheureusement la fin pour vous.")
-              {this.setState({inventory : []}),this.storeData()}
-            }
+          }
+          if (haveCondition === true) {
+            alert("Un animal sauvage se rue sur vous. Heuresement pour vous, vous étiez prêt... Vous sortez une de vos arme et abattez l'animal! ")
+          }
+          else{
+            alert("Un animal sauvage vous attaque. Vous n'êtes hélas pas armé. C'est malheureusement la fin pour vous.")
+            {this.setState({inventory : []}),this.storeData()}
           }
         }
         else if(enemyDetection.title === "Trap"){
-          var roulette = getRandomInt(2)
+          roulette
           if (roulette === 0) {
             alert("Vous marchez prudemment... Quand soudain vous regardez à vos pieds. C'était moins une! Quelqu'un à poser un piège et vous y échappé de peu!")
           }
@@ -205,9 +225,9 @@ markerEvent(){
           }
         }
         else if(enemyDetection.title === "Biohazard"){
-          var roulette = getRandomInt(2)
+          roulette
           if (roulette === 0) {
-            alert("Grâce à vos magnifiques poil de nez, le virus qui à décimer une grande partie de la population ne parvient pas à pénétrer vore organisme!")
+            alert("Grâce à vos magnifiques poils de nez, le virus qui à décimer une grande partie de la population ne parvient pas à pénétrer vore organisme!")
           }
           else{
             alert("Le danger n'est pas toujours visible à l'oeil nu... Cette pensée vous stress. Vous prenez une grand inspiration, hhélas en faisant cela vous aspirez des particules de virus... Vous voila devenu un Zombie...")
@@ -221,7 +241,9 @@ markerEvent(){
         }
         else{
           alert("Vous trouvez un camp de survivant. l'un d'entre eux s'approche et vous offre un peu de nourriture." )
-          this.setState({inventory: addDonation}), this.storeData()
+          getInventoryItem.push(addDonation)
+          this.setState({inventory: getInventoryItem}),
+           this.storeData()
         }
       }
       else if(item.title !== "Ennemy" && item.title !== "Ally"){
@@ -247,6 +269,7 @@ markerEvent(){
         //clicking out side of alert will not cancel
       );
       //créer un nouveau objectif
+      haveCondition = false
       this.getRandomMarker();
       }
     }
