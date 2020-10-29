@@ -12,6 +12,7 @@ import * as geolib from 'geolib';
 import AsyncStorage from '@react-native-community/async-storage'
 import { Platform, StyleSheet, Alert } from "react-native"
 import React from 'react'
+import { getElementIconFromApi, APILINK } from './../API/ElementItemApi';
 
 
 const LATITUDE_DELTA = 0.01;
@@ -77,7 +78,7 @@ storeData = async (value) => {
 fetchData = async()=>{
   const data = []
   //data
-  const response = await fetch('http://172.21.201.18:8000/api/v1/item')
+  const response = await fetch(APILINK + '/api/v1/item')
   const test = await response.json()
   this.setState({data:test});
   //loot
@@ -88,7 +89,7 @@ fetchData = async()=>{
 }
 fetchElement = async()=>{
   //data
-  const response = await fetch('http://172.21.201.18:8000/api/v1/element')
+  const response = await fetch(APILINK + '/api/v1/element')
   const allyEvent = await response.json()
   this.setState({eventAlly:allyEvent});
 }
@@ -305,6 +306,8 @@ render() {
                 latitudeDelta: LATITUDE_DELTA,
                 longitudeDelta: LONGITUDE_DELTA
       }}>
+        <MapView.Marker  coordinate={{longitude: this.state.markers.longitude, latitude: this.state.markers.latitude}}
+        onPress={ () => this.markerEvent()}/>
         <MapView.Marker  coordinate={{longitude: this.state.markers.longitude, latitude: this.state.markers.latitude}}
         onPress={ () => this.markerEvent()}/>
       </MapView>
