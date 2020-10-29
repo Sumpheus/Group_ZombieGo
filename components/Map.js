@@ -38,11 +38,11 @@ export default class Map extends React.Component {
           inventory: [],
           eventAlly: []
           }
-    }   
+    }
 
 
 
-    
+
 // Chargement des fonctions avant rendu
 componentDidMount() {
   this.getCoords(),
@@ -103,7 +103,7 @@ getCoords(){
       longitudeDelta: LONGITUDE_DELTA
     };
     this.setState({region: initialRegion});
-  }, 
+  },
   error => console.log(error.message), {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000});
   // mise à jour en temps réelle des coordonnées de l'utilisateur
   this.watchID = Geolocation.watchPosition(position => {
@@ -114,7 +114,7 @@ getCoords(){
       longitudeDelta: LONGITUDE_DELTA
     };
     this.setState({region: region});
-  }, 
+  },
   error => console.log(error.message), {enableHighAccuracy: true, timeout: 0, maximumAge: 0});
 }
 
@@ -142,18 +142,18 @@ markerEvent(){
   this.getCoords();
   // récupération de la distance entre le marker et l'utilisateur
   var distance = geolib.getDistance(
-    { 
+    {
       latitude: this.state.region.latitude,
-      longitude: this.state.region.longitude 
-    }, 
-    { 
+      longitude: this.state.region.longitude
+    },
+    {
       latitude: this.state.markers.latitude,
-      longitude: this.state.markers.longitude 
+      longitude: this.state.markers.longitude
     }
   )
     //vérification de la distance marker > utilisateur pour lancer l'event si l'utilisateur appuie sur le marker
     if (distance <= 150) {
-      //récupération d'un objet aléatoire 
+      //récupération d'un objet aléatoire
       const items = this.state.data;
       var numberOfItem = items.length,
       randomItem = Math.floor(Math.random() * (numberOfItem - 1) + 1);
@@ -167,47 +167,67 @@ markerEvent(){
       var addToInventory = this.state.inventory.concat(this.state.loot);
       var addDonation = this.state.inventory.concat(allyDonation[1].Items[randomDonation])
       var getInventoryItem = this.state.inventory
-      
-      
+      var haveCondition = false
+      var roulette = Math.floor(Math.random() * Math.floor(2));
+
+
       if (item.title === "Ennemy") {
         if(enemyDetection.title === "Zombi"){
           for (let i = 0; i < getInventoryItem.length; i++) {
             const element = getInventoryItem[i];
             if (element.element.title ==="Weapon") {
-              alert("Un zombie vous attaque. Vous survivez grâce à l'une de vos armes !")
+              if (roulette = 1) {
+                getInventoryItem.splice(i)
+                this.setState({inventory : getInventoryItem})
+                this.storeData()
+              }
+              haveCondition = true
+              break
             }
-            else{
-              alert("Un zombie vous surprend. Vous n'êtes hélas pas armé. C'est malheureusement la fin pour vous.")
-              {this.setState({inventory : []}),this.storeData()}
-            }
+          }
+          if (haveCondition === true) {
+            alert("Un zombie vous attaque. Vous survivez grâce à l'une de vos armes !")
+          }
+          else{
+            alert("Un zombie vous surprend. Vous n'êtes hélas pas armé. C'est malheureusement la fin pour vous.")
+            {this.setState({inventory : []}),this.storeData()}
           }
          }
         else if(enemyDetection.title === "Dangerous_animal"){
           for (let i = 0; i < getInventoryItem.length; i++) {
             const element = getInventoryItem[i];
             if (element.element.title ==="Weapon") {
-              alert("Un animal sauvage se rue sur vous. Heuresement pour vous, vous étiez prêt... Vous sortez une de vos arme et abattez l'animal! ")
+              if (roulette = 1) {
+                getInventoryItem.splice(i)
+                this.setState({inventory : getInventoryItem})
+                this.storeData()
+              }
+              haveCondition = true
+              break
             }
-            else{
-              alert("Un animal sauvage vous attaque. Vous n'êtes hélas pas armé. C'est malheureusement la fin pour vous.")
-              {this.setState({inventory : []}),this.storeData()}
-            }
+          }
+          if (haveCondition === true) {
+            alert("Un animal sauvage se rue sur vous. Heuresement pour vous, vous étiez prêt... Vous sortez une de vos arme et abattez l'animal! ")
+          }
+          else{
+            alert("Un animal sauvage vous attaque. Vous n'êtes hélas pas armé. C'est malheureusement la fin pour vous.")
+            {this.setState({inventory : []}),this.storeData()}
           }
         }
         else if(enemyDetection.title === "Trap"){
-          var roulette = getRandomInt(2)
+          roulette
           if (roulette === 0) {
-            alert("Vous marchez prudemment... Quand soudain vous regardez à vos pieds. C'était moins une! Quelqu'un à poser un piège et vous y échappé de peu!")
+            alert("Vous marchez prudemment... Quand soudain vous regardez à vos pieds. C'était moins une! Quelqu'un à poser un piège et vous y echapper de peu!")
           }
           else{
-            alert("Vous manquez d'attention... Malheureusement pour vous, vous tombez dans un piège... C'est la fin de votre avneture!")
+            alert("Vous manquez d'attention... Malheureusement pour vous, vous tombez dans un piège... C'est la fin de votre aventure!")
             {this.setState({inventory : []}),this.storeData()}
           }
         }
         else if(enemyDetection.title === "Biohazard"){
-          var roulette = getRandomInt(2)
+          roulette
           if (roulette === 0) {
-            alert("Grâce à vos magnifiques poil de nez, le virus qui à décimer une grande partie de la population ne parvient pas à pénétrer vore organisme!")
+            alert("Grâce à vos magnifiques poils de nez, le virus qui à décimer une grande partie de la population ne parvient pas à pénétrer vore organisme!")
           }
           else{
             alert("Le danger n'est pas toujours visible à l'oeil nu... Cette pensée vous stress. Vous prenez une grand inspiration, hhélas en faisant cela vous aspirez des particules de virus... Vous voila devenu un Zombie...")
@@ -221,7 +241,9 @@ markerEvent(){
         }
         else{
           alert("Vous trouvez un camp de survivant. l'un d'entre eux s'approche et vous offre un peu de nourriture." )
-          this.setState({inventory: addDonation}), this.storeData()
+          getInventoryItem.push(addDonation)
+          this.setState({inventory: getInventoryItem}),
+           this.storeData()
         }
       }
       else if(item.title !== "Ennemy" && item.title !== "Ally"){
@@ -247,10 +269,11 @@ markerEvent(){
         //clicking out side of alert will not cancel
       );
       //créer un nouveau objectif
+      haveCondition = false
       this.getRandomMarker();
       }
     }
-    
+
 
 }
 
@@ -295,4 +318,3 @@ map: {
   height: '100%'
 }
 });
-
