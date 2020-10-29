@@ -172,15 +172,15 @@ markerEvent(){
       var haveCondition = false
       var roulette = Math.floor(Math.random() * Math.floor(2));
 
-
+console.log(this.state.inventory)
       if (item.title === "Ennemy") {
         if(enemyDetection.title === "Zombi"){
           for (let i = 0; i < getInventoryItem.length; i++) {
             const element = getInventoryItem[i];
             if (element.element.title ==="Weapon") {
               if (roulette = 1) {
-                getInventoryItem.splice(i)
-                this.setState({inventory : getInventoryItem})
+                
+                this.setState({inventory : getInventoryItem.splice(i)})
                 this.storeData()
               }
               haveCondition = true
@@ -192,7 +192,8 @@ markerEvent(){
           }
           else{
             alert("Un zombie vous surprend. Vous n'êtes hélas pas armé. C'est malheureusement la fin pour vous.")
-            {this.setState({inventory : []}),this.storeData()}
+            this.setState({inventory : []})
+            this.storeData()
           }
          }
         else if(enemyDetection.title === "Dangerous_animal"){
@@ -201,7 +202,7 @@ markerEvent(){
             if (element.element.title ==="Weapon") {
               if (roulette = 1) {
                 getInventoryItem.splice(i)
-                this.setState({inventory : getInventoryItem})
+                this.setState({inventory : getInventoryItem.splice(i)})
                 this.storeData()
               }
               haveCondition = true
@@ -243,8 +244,7 @@ markerEvent(){
         }
         else{
           alert("Vous trouvez un camp de survivant. L'un d'entre eux s'approche ... et vous offre un peu de nourriture !" )
-          getInventoryItem.push(addDonation)
-          this.setState({inventory: getInventoryItem}),
+          this.setState({inventory: addDonation}),
            this.storeData()
         }
       }
@@ -275,7 +275,6 @@ markerEvent(){
         //clicking out side of alert will not cancel
       );
       //créer un nouveau objectif
-      haveCondition = false
       this.getRandomMarker();
       }
     }
