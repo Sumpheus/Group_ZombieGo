@@ -210,43 +210,40 @@ console.log(this.state.inventory)
             }
           }
           if (haveCondition === true) {
-            alert("Un animal sauvage se rue sur vous. Heuresement pour vous, vous étiez prêt... Vous sortez une de vos arme et abattez l'animal! ")
+            alert("Un animal sauvage surgi devant vous. Heureusement, vous étiez prêt... Vous sortez une de vos armes et abattez l'animal ! ")
           }
           else{
-            alert("Un animal sauvage vous attaque. Vous n'êtes hélas pas armé. C'est malheureusement la fin pour vous.")
-            this.setState({inventory : []})
-            this.storeData()
+            alert("Un animal sauvage vous attaque. Vous n'êtes, hélas, pas armé. Votre voyage s'arrête là ...au chaud dans l'estomac de l'animal.")
+            {this.setState({inventory : []}),this.storeData()}
           }
         }
         else if(enemyDetection.title === "Trap"){
           roulette
           if (roulette === 0) {
-            alert("Vous marchez prudemment... Quand soudain vous regardez à vos pieds. C'était moins une! Quelqu'un à poser un piège et vous y echapper de peu!")
+            alert("Vous marchez prudemment... Quand soudain vous regardez à vos pieds. C'était moins une ! Quelqu'un à poser un piège et vous y echappez de justesse !")
           }
           else{
-            alert("Vous manquez d'attention... Malheureusement pour vous, vous tombez dans un piège... C'est la fin de votre aventure!")
-            this.setState({inventory : []})
-            this.storeData()
+            alert("Vous manquez d'attention... Malheureusement pour vous, vous tombez dans un piège... C'est la fin de votre aventure !")
+            {this.setState({inventory : []}),this.storeData()}
           }
         }
         else if(enemyDetection.title === "Biohazard"){
           roulette
           if (roulette === 0) {
-            alert("Grâce à vos magnifiques poils de nez, le virus qui à décimer une grande partie de la population ne parvient pas à pénétrer vore organisme!")
+            alert("Grâce à vos magnifiques poils de nez, le virus qui a décimé une grande partie de la population ne parvient pas à pénétrer vore organisme ! Vous vous écriez : \"Vous ne passerez pas !\"")
           }
           else{
-            this.setState({inventory : []})
-            this.storeData()
-            alert("Le danger n'est pas toujours visible à l'oeil nu... Cette pensée vous stress. Vous prenez une grand inspiration, hhélas en faisant cela vous aspirez des particules de virus... Vous voila devenu un Zombie...")
+            alert("Le danger n'est pas toujours visible à l'oeil nu et cette pensée vous stress. Pour rester zen, vous prenez une grande inspiration ...mais en faisant cela, vous aspirez des particules de virus ! Félicitation, vous voila devenu un Zombie !")
+            {this.setState({inventory : []}),this.storeData()}
           }
         }
        }
       if (item.title === "Ally") {
         if(item.title === "Animal"){
-          alert('Vous apercevez un petit animal inoffensif. Ce dernier fuit en vous voyant')
+          alert('Vous apercevez un petit animal inoffensif mais ce dernier fuit en vous voyant ! Dommage, vous auriez pu manger aujourd\'hui...')
         }
         else{
-          alert("Vous trouvez un camp de survivant. l'un d'entre eux s'approche et vous offre un peu de nourriture." )
+          alert("Vous trouvez un camp de survivant. L'un d'entre eux s'approche ... et vous offre un peu de nourriture !" )
           this.setState({inventory: addDonation}),
            this.storeData()
         }
@@ -255,9 +252,9 @@ console.log(this.state.inventory)
       // message d'alert pour récupérer ou non l'objet
       Alert.alert(
         //titre
-        'LOOT:',
+        'Your loot : ' + this.state.loot.title,
         //body
-        'do you want take '+ this.state.loot.title + ' ?',
+        'Do you want to pick up this '+ this.state.loot.title.toLowerCase() + ' ?',
         [
           {
             text: 'Yes',
@@ -267,6 +264,10 @@ console.log(this.state.inventory)
           },
           {
             text: 'No',
+            onPress: () => {}
+          },
+          {
+            text: 'Empty my backpack',
             onPress: () => {this.setState({inventory : []}),this.storeData()}
           },
         ],
