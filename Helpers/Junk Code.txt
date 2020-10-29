@@ -1,0 +1,44 @@
+Orientation Detector
+
+  // state = {
+  //   orientation:  ''
+  // };
+
+
+  // componentDidMount() {
+  //   Dimensions.addEventListener('change', ({ window: { width, height }}) => {
+  //     if (width < height) {
+  //       //Portrait
+  //       this.setState({ orientation: 'Portrtait' })
+  //     } else {
+  //       //Landscape
+  //       this.setState({ orientation: 'Landscape' })
+  //     }
+  //   });
+  // }
+
+
+Tentative custom fonts;
+
+// function App(){
+//   let [fontsLoaded, error] = useFonts({
+//     BlackOpsOne_400Regular,
+//   });
+
+//   if (!fontsLoaded) {
+//     return <AppLoading />;
+//   }
+// }
+
+
+Essai Son;
+
+const soundObject = new Expo.Audio.Sound();
+    try {
+    await soundObject.loadAsync(require('./assets/audio/Musique.mp3'));
+    await soundObject.playAsync();
+  
+    await soundObject.unloadAsync();
+  } catch (error) {
+  
+}
