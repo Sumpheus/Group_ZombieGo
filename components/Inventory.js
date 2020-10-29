@@ -1,9 +1,11 @@
-import 'react-native-gesture-handler';
+// import 'react-native-gesture-handler';
 import * as React from 'react';
 import { Component }  from 'react';
-import { Dimensions, StyleSheet, View, Text, FlatList, SafeAreaView, Image, ActivityIndicator, ImageBackground, ScrollView } from 'react-native';
+import { Dimensions, StyleSheet, View, Text, FlatList, SafeAreaView, Image, ActivityIndicator, ImageBackground, ScrollView, StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage'
+import { getElementIconFromApi, APILINK } from './../API/ElementItemApi';
 
+import { NavigationEvents } from 'react-navigation';
 
 class Inventory extends Component {
 
@@ -15,7 +17,15 @@ class Inventory extends Component {
   }
 
   componentDidMount(){
+    const { navigation } = this.props
+       this._refreshData = navigation.addListener('focus', () => {
+         this.getData();
+       });
     this.getData()
+  };
+
+  componentWillUnmount() {
+    this._refreshData();
   }
 
   getData = async () => {
@@ -31,54 +41,53 @@ class Inventory extends Component {
     }
   }
 
-  getElementIconFromApi(name) {
-    return 'http://172.21.201.18:8000' + '/images/' + name + '.png'
-  }
-  
-
-  render() { 
+  render() {
     if (Array.isArray(this.state.inventory) && this.state.inventory.length) {
-    return (
-      
-      <View style = {styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
-        <ImageBackground
+      return (
+        <View style = {styles.container} contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
+          <ImageBackground
             source={require('../assets/img/inventoryBackground.jpg')}
             style={styles.imageBackground}
             resizeMode={"cover"}
             rate={1.0}
           ></ImageBackground>
-        <View style = {styles.container2}>
-      <FlatList
-        numColumns={3}
-        data={this.state.inventory}
-        keyExtractor={(item, index) => String(index)}
-        renderItem={({item, index}) => {
-            return (
-              <View style = {styles.item}>
-                <View style = {styles.viewTitle}><Text style = {styles.title}>{item.title}</Text></View>
-                <Image style={styles.image} source={{uri: this.getElementIconFromApi(item.title)}}/>
-                <View style = {styles.viewNumber}><Text style = {styles.number}>x {item.number}</Text></View>
-              </View>
-            )
-        }}
-      />
-      </View>
-      </View>
-    )
-  } 
-  else {
-    return (
-      <View style = {styles.container2}>
-        <View style = {styles.item2}>
-          <Image style = {styles.image2} source={require('../assets/img/backpack.png')}/>
-          <View style = {styles.viewTitle2}>
-            <Text style = {styles.title}>Your inventory is empty</Text>
+          <View style = {styles.container2}>
+            <FlatList
+              numColumns={3}
+              data={this.state.inventory}
+              keyExtractor={(item, index) => String(index)}
+              renderItem={({item, index}) => {
+                return (
+                  <View style = {styles.item}>
+                    <View style = {styles.viewTitle}><Text style = {styles.title}>{item.title}</Text></View>
+                    <Image style={styles.image} source={{uri: getElementIconFromApi(item.title)}}/>
+                     <View style = {styles.viewNumber}><Text style = {styles.number}>x 1</Text></View>
+                    {/* <View style = {styles.viewNumber}><Text style = {styles.number}>x {item.number}</Text></View> */}
+                  </View>
+                )
+              }}
+            />
           </View>
         </View>
-      </View>
-    )
+      )
+    }
+    else {
+      return (
+        <View style = {styles.container}>
+          <ImageBackground
+            source={require('../assets/img/inventoryBackground.jpg')}
+            style={styles.imageBackground2}
+          ></ImageBackground>
+          <View style = {styles.item2}>
+            <View style = {styles.viewTitle2}>
+              <Text style = {styles.title2}>Your inventory is empty</Text>
+            </View>
+            <Image style = {styles.image2} source={require('../assets/img/backpackRed.png')}/>
+          </View>
+        </View>
+      )
+    }
   }
-}
 }
 
 const styles = StyleSheet.create({
@@ -116,8 +125,8 @@ const styles = StyleSheet.create({
     borderBottomColor: "black",
     borderStyle:'solid',
     borderWidth: 2,
-    height: 120,
-    width: 120,
+    height: 115,
+    width: 115,
     borderRadius: 20,
   },
   item2: {

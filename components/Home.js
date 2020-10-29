@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StatusBar } from "react-native";
-import { StyleSheet, View, Text, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity, ImageBackground, Image } from 'react-native';
 import Video from "react-native-video";
 
 
@@ -11,23 +11,29 @@ const Home = ({ navigation }) => {
       <StatusBar
         barStyle = "light-content"
         hidden = {false}
-        backgroundColor = "black" // ou une couleur..à voir
+        translucent = {true}
+        backgroundColor = "transparent" // ou une couleur..à voir
       />
-
-    <Video
-      source={require("../assets/videos/WorldMap2.mp4")}
-      style={styles.backvideo}
-      muted={true}
-      repeat={true}
-      resizeMode={"cover"}
-      rate={1.0}
-      ignoreSilentSwitch={"obey"}
-    />
-
-      <View style={styles.titlecontainer}>
-        <View style={styles.titlecontainer2}>
-          <Text style={[styles.title, {fontFamily: 'serif'}]}>ZombiGo</Text>
-        </View>
+      <Video
+        source={require("../assets/videos/WorldMap2.mp4")}
+        style={styles.backvideo}
+        muted={true}
+        repeat={true}
+        resizeMode={"cover"}
+        rate={1.0}
+        ignoreSilentSwitch={"obey"}
+      />
+      <Video
+        source={require("./../assets/audio/simulationSound.mp3")}
+        repeat={true}
+        rate={1.0}
+        ignoresSilentSwitch={"obey"}
+        shouldPlay
+        isLooping
+        audioOnly
+      />
+      <View style={styles.container}>
+        <Image style={styles.image} source={require('../assets/img/zombieGo.png')}/>
       </View>
 
       <View style = {styles.menu}>
@@ -59,17 +65,12 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
-
-    titlecontainer:{
-      backgroundColor: 'transparent',
-      flex:1,
-      display: 'flex',
-      justifyContent: 'center',
-    },
-
-    titlecontainer2:{
-      display: 'flex',
-      alignItems: 'center',
+    image: {
+       flex: 1,
+width: '100%',
+       height: 150,
+       resizeMode: 'cover',
+       marginTop: 10,
     },
     title:{
       opacity: 1,
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
       color: '#850606',
     },
     menu:{
-      flex: 4,
+      flex: 1,
       display: 'flex',
       justifyContent: 'center',
     },
@@ -92,8 +93,6 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       margin: 30,
       flexDirection: 'row',
-      textShadowColor: '#850606',
-      textShadowRadius: 10,
     },
     backvideo:{
       position: 'absolute',
@@ -116,6 +115,8 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       fontSize: 40,
       marginLeft: -200,
+      textShadowColor: 'red',
+      textShadowRadius: 10,
     },
     btnImageSim: {
       flex: 1,

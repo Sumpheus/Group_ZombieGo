@@ -3,8 +3,8 @@ import * as React from 'react';
 import { Component }  from 'react';
 import { StyleSheet, Image } from 'react-native';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-// import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { MainStackNavigator, InventoryStackNavigator, CreditsStackNavigator} from "./StackNavigator.js";
+
 
 const Tab = createBottomTabNavigator();
 
@@ -12,15 +12,11 @@ const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
     initialRouteName="Home"
-
-    activeColor="red"
-      labelStyle={{ fontSize: 12 }}
-      style={{ backgroundColor: 'tomato' }}
     tabBarOptions={{
-      activeTintColor: '#850606',
+      activeTintColor: 'white',
       inactiveTintColor: 'black',
-      activeBackgroundColor: '#696969',
-      inactiveBackgroundColor: '#696969',
+      activeBackgroundColor: '#850606',
+      inactiveBackgroundColor: '#850606',
       style: {
         height: 60,
         borderTopWidth: 1,
