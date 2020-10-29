@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from '../components/Home.js';
 import Element from '../components/Element.js';
-import Arcade from '../components/Arcade.js';
+import Map from '../components/Map.js';
 import Inventory from '../components/Inventory.js';
 import Credits from '../components/Credits.js';
 
@@ -47,8 +47,8 @@ const MainStackNavigator = () => {
       />
 
       <Stack.Screen
-        name="Arcade"
-        component={Arcade}
+        name="Map"
+        component={Map}
         options={{
           title:"Your mission :",
           headerTransparent:false,

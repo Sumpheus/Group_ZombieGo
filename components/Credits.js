@@ -1,32 +1,35 @@
-// import 'react-native-gesture-handler';
 import * as React from 'react';
 import { Component }  from 'react';
 import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableOpacity, ImageBackground, Linking, Dimensions } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
 
+const image= { uri: 'https://images.unsplash.com/photo-1526547462705-121430d02c2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1532&q=80' };
 
 const Credits = () => {
   return (
     <View style = {styles.container}>
-      <ImageBackground
-        source={require('../assets/img/DoorZombies.jpg')}
-        style={styles.BackgroundPic}
-        resizeMode={"cover"}
-        rate={1.0}
-      >
-        <View style= {styles.CreatedBy}>
-          <Text style = {styles.interNames}>Created by</Text>
-          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/kevin-nguma/')}>Kevin NGUMA <AntDesign name="linkedin-square" size={16} color="white"/></Text>
-          <Text style = {styles.interNames}>and</Text>
-          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/oswald-quevillart/')}>Oswald QUEVILLART <AntDesign name="linkedin-square" size={16} color="white"/></Text>
-          <Text style = {styles.interNames}>and</Text>
-          <Text style = {styles.names} onPress={() => Linking.openURL('https://www.linkedin.com/in/philippe-perechodov/')}>Philippe PERECHODOV <AntDesign name="linkedin-square" size={16} color="white"/></Text>
-        </View>
-        <View style={styles.Copyright}>
-          <Text style = {[styles.footerText, {color:'white'}]}>ACS project made in October 2020</Text>
-          <Text style = {[styles.footerText, {color:'#850606', fontWeight: 'bold'}]} onPress={() => Linking.openURL('https://github.com/Sumpheus/Group_ZombieGo')}><AntDesign name="github" size={28} color="#850606" /> ZombieGo</Text>
-        </View>
-      </ImageBackground>
+
+      <ScrollView>
+        <ImageBackground source={image} style={styles.backpic, styles.imgcontainer}>
+        </ImageBackground>
+      </ScrollView>
+
+
+      <View style = {styles.footercontainer}>
+        <Text style = {[styles.footerText, {flexDirection:'row'}]}>
+          <Text style = {{color:'black'}}>App created by </Text>
+          <Text style = {{color:'#850606'}} onPress={() => Linking.openURL('https://www.linkedin.com/in/kevin-nguma/')}>Kevin Nguma</Text>
+          <Text style = {{color:'black'}}>, </Text>
+          <Text style = {{color:'#850606'}} onPress={() => Linking.openURL('https://www.linkedin.com/in/oswald-quevillart/')}>Oswald Quevillart</Text>
+          <Text style = {{color:'black'}}> and </Text>
+          <Text style = {{color:'#850606'}} onPress={() => Linking.openURL('https://www.linkedin.com/in/philippe-perechodov/')}>Philippe Perechodov</Text>
+        </Text>
+        <Text style = {[styles.footerText, {color:'black'}]}>
+          ACS project - October 2020
+        </Text>
+        <Text style = {[styles.footerText, {color:'#850606'}]} onPress={() => Linking.openURL('https://github.com/Sumpheus/Group_ZombieGo')}>
+          Github
+        </Text>
+      </View>
     </View>
   )
 }
@@ -35,53 +38,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  BackgroundPic: {
-    position: "relative",
+  imgcontainer: {
+    width: Dimensions.get("window") .width,
+    height: Dimensions.get("window") .height,
+    opacity: 1,
+  },
+  backpic: {
+    position: "absolute",
     top: 0,
     left: 0,
-    bottom: 0,
     right: 0,
-    resizeMode: 'cover',
-    height: '100%',
+    bottom: 0,
   },
-  CreatedBy:{
-    flex: 2,
-    justifyContent: "flex-end",
+  footercontainer: {
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
+    textAlign: "center",
   },
   footerText: {
-    fontSize: 24,
-    marginBottom: 10,
-    textAlign: "center",
-  },
-  names:{
-    color: "white",
-    borderStyle: "solid",
-    borderWidth: 2,
-    borderBottomColor: "black",
-    borderRadius: 5,
-    backgroundColor: "#850606",
-    textAlign: "center",
-    fontSize: 26,
-    paddingBottom: 5,
-    paddingTop: 5,
-    paddingLeft: 20,
-    paddingRight: 20,
-  },
-  interNames:{
-    color: "white",
-    textAlign: "center",
-    fontSize: 24,
-    textShadowColor: 'red',
-    textShadowRadius: 10,
-    marginBottom: 10,
-    marginTop: 10,
-  },
-  Copyright:{
-    flex: 1,
-    backgroundColor: "transparent",
-    justifyContent: "flex-end",
-    marginBottom: 20,
+    fontSize: 20,
+    marginBottom: 5,
+    marginTop: 5,
+    textAlign: 'center',
   },
 });
 

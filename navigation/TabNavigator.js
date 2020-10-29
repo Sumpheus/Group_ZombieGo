@@ -5,9 +5,6 @@ import { StyleSheet, Image } from 'react-native';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { MainStackNavigator, InventoryStackNavigator, CreditsStackNavigator} from "./StackNavigator.js";
-import { Fontisto, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-
 
 const Tab = createBottomTabNavigator();
 
@@ -34,10 +31,6 @@ const BottomTabNavigator = () => {
         fontWeight: 'bold',
       },
     }}
-
-
-
-
     >
       <Tab.Screen
         name="Inventory"
@@ -45,7 +38,10 @@ const BottomTabNavigator = () => {
         options={{
           tabBarLabel: 'Backpack',
           tabBarIcon: () => {
-            return <MaterialCommunityIcons name="bag-personal-outline" size={36} color="black" />
+            return <Image
+              source={require('../assets/img/backpack.png')}
+              style={styles.icon}
+              />
           }
         }}
       />
@@ -55,7 +51,10 @@ const BottomTabNavigator = () => {
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: () => {
-            return <Fontisto name="tent" size={30} color="black"/>
+            return <Image
+              source={require('../assets/img/tent.png')}
+              style={styles.icon}
+              />
           }
         }}
       />
@@ -65,7 +64,10 @@ const BottomTabNavigator = () => {
         options={{
           tabBarLabel: 'Who are we ?',
           tabBarIcon: () => {
-            return <AntDesign name="github" size={30} color="black" />
+            return <Image
+              source={require('../assets/img/gitHub.png')}
+              style={styles.icon}
+              />
           }
         }}
       />
